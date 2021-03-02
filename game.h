@@ -1,25 +1,27 @@
-/** 
+/**
  * @brief It defines the game interface
  * for each command
- * 
+ *
  * @file game.h
  * @author Profesores PPROG
- * @version 1.0 
- * @date 13-01-2015 
+ * @version 1.0
+ * @date 13-01-2015
  * @copyright GNU Public License
  */
 
 #ifndef GAME_H
 #define GAME_H
 
+#include "types.h"
 #include "command.h"
 #include "space.h"
+#include "player.h"
+#include "object.h"
 
 typedef struct _Game{
-  Id player_location;
-  Id object_location;
+  Player* player;
+  Object* object;
   Space* spaces[MAX_SPACES + 1];
-  T_Command last_cmd;
 } Game;
 
 STATUS game_create(Game* game);

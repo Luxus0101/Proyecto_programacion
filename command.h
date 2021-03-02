@@ -2,9 +2,9 @@
  * @brief It implements the command interpreter
  *
  * @file command.h
- * @author Profesores PPROG
+ * @author Paloma Ruiz Matesanz
  * @version 2.0
- * @date 13-01-2020
+ * @date 22-02-2021
  * @copyright GNU Public License
  */
 

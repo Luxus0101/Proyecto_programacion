@@ -63,6 +63,8 @@ STATUS space_set_name(Space* space, char* name) {
   return OK;
 }
 
+/* Movement of the player*/
+
 STATUS space_set_north(Space* space, Id id) {
   if (!space || id == NO_ID) {
     return ERROR;
@@ -116,6 +118,8 @@ Id space_get_id(Space* space) {
   }
   return space->id;
 }
+
+/* */
 
 Id space_get_north(Space* space) {
   if (!space) {
@@ -197,4 +201,3 @@ STATUS space_print(Space* space) {
 
   return OK;
 }
-

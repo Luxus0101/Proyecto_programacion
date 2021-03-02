@@ -2,16 +2,15 @@
  * @brief It defines the game loop
  *
  * @file game_loop.c
- * @author Profesores PPROG
+ * @author Paloma Ruiz Matesanz
  * @version 2.0
- * @date 13-01-2020
+ * @date 22-02-2021
  * @copyright GNU Public License
  */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "graphic_engine.h"
-#include "game.h"
 
 int game_loop_init(Game *game, Graphic_engine **gengine, char *file_name);
 void game_loop_run(Game game, Graphic_engine *gengine);

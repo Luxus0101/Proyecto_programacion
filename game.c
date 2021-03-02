@@ -13,17 +13,20 @@
 #include <stdlib.h>
 #include <string.h>
 #include "game.h"
+#include "object.h"
+#include "player.h"
+#include "space.h"
+#include "command.h"
+#include "game_reader.h"
 
 #define N_CALLBACK 4
 
-/**
-   Define the function type for the callbacks
-*/
+//Define the function type for the callbacks
+
 typedef void (*callback_fn)(Game* game);
 
-/**
-   List of callbacks for each command in the game
-*/
+//List of callbacks for each command in the game
+
 void game_callback_unknown(Game* game);
 void game_callback_exit(Game* game);
 void game_callback_next(Game* game);
@@ -35,19 +38,14 @@ static callback_fn game_callback_fn_list[N_CALLBACK]={
   game_callback_next,
   game_callback_back};
 
-/**
-   Private functions
-*/
+//Private functions
 
-STATUS game_load_spaces(Game* game, char* filename);
 STATUS game_add_space(Game* game, Space* space);
 Id     game_get_space_id_at(Game* game, int position);
 STATUS game_set_player_location(Game* game, Id id);
 STATUS game_set_object_location(Game* game, Id id);
 
-/**
-   Game interface implementation
-*/
+//Game interface implementation
 
 STATUS game_create(Game* game) {
   int i;
@@ -94,7 +92,7 @@ STATUS game_add_space(Game* game, Space* space) {
     return ERROR;
   }
 
-  while ( (i < MAX_SPACES) && (game->spaces[i] != NULL)){
+  while ((i < MAX_SPACES) && (game->spaces[i] != NULL)){
     i++;
   }
 
@@ -112,7 +110,6 @@ Id game_get_space_id_at(Game* game, int position) {
   if (position < 0 || position >= MAX_SPACES) {
     return NO_ID;
   }
-
   return space_get_id(game->spaces[position]);
 }
 
@@ -128,7 +125,6 @@ Space* game_get_space(Game* game, Id id){
       return game->spaces[i];
     }
   }
-
   return NULL;
 }
 
@@ -140,17 +136,19 @@ STATUS game_set_player_location(Game* game, Id id) {
 
   game->player_location = id;
 
+  return OK;
 }
 
 STATUS game_set_object_location(Game* game, Id id) {
 
-  int i = 0;
-
   if (id == NO_ID) {
     return ERROR;
   }
-
-  game->object_location = id;
+  while (i<MAX_SPACES){
+    space_set_object(game-<spaces[i], object_get_id(game->object));
+    return OK;
+  }
+  i++;
 
   return OK;
 }
@@ -192,9 +190,7 @@ BOOL game_is_over(Game* game) {
   return FALSE;
 }
 
-/**
-   Callbacks implementation for each action
-*/
+//Callbacks implementation for each action
 
 void game_callback_unknown(Game* game) {
 }
@@ -245,64 +241,4 @@ void game_callback_back(Game* game) {
       return;
     }
   }
-}
-
-STATUS game_load_spaces(Game* game, char* filename) {
-  FILE* file = NULL;
-  char line[WORD_SIZE] = "";
-  char name[WORD_SIZE] = "";
-  char* toks = NULL;
-  Id id = NO_ID, north = NO_ID, east = NO_ID, south = NO_ID, west = NO_ID;
-  Space* space = NULL;
-  STATUS status = OK;
-
-  if (!filename) {
-    return ERROR;
-  }
-
-  file = fopen(filename, "r");
-  if (file == NULL) {
-    return ERROR;
-  }
-  /*Scroll down the data file .*/
-  while (fgets(line, WORD_SIZE, file)) {
-    /*Parse lines into usable data .*/
-    if (strncmp("#s:", line, 3) == 0) {
-      toks = strtok(line + 3, "|");
-      id = atol(toks);
-      toks = strtok(NULL, "|");
-      strcpy(name, toks);
-      toks = strtok(NULL, "|");
-      north = atol(toks);
-      toks = strtok(NULL, "|");
-      east = atol(toks);
-      toks = strtok(NULL, "|");
-      south = atol(toks);
-      toks = strtok(NULL, "|");
-      west = atol(toks);
-
-      /*Ni zorra de que hace .*/
-      #ifdef DEBUG
-      printf("Leido: %ld|%s|%ld|%ld|%ld|%ld\n", id, name, north, east, south, west);
-      #endif
-      /*Asign properties to the newly created space and add it to the game .*/
-      space = space_create(id);
-      if (space != NULL) {
-	       space_set_name(space, name);
-	       space_set_north(space, north);
-	       space_set_east(space, east);
-	       space_set_south(space, south);
-	       space_set_west(space, west);
-	       game_add_space(game, space);
-      }
-    }
-  }
-
-  if (ferror(file)) {
-    status = ERROR;
-  }
-
-  fclose(file);
-
-  return status;
 }
