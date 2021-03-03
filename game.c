@@ -24,6 +24,7 @@
 
 #define N_CALLBACK 7
 
+
 //Define the function type for the callbacks
 
 typedef void (*callback_fn)(Game* game);
@@ -63,8 +64,8 @@ STATUS game_create(Game* game) {
     game->spaces[i] = NULL;
   }
 
-  game-> player = player_create(102);
-  game-> object = object_create (10);
+  game-> player = player_create(PLAYER_ID);
+  game-> object = object_create(OBJECT_ID);
   game-> last_cmd = NO_CMD;
 
   return OK;

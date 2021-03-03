@@ -13,6 +13,8 @@
 
 #include "types.h"
 
+#define OBJECT_ID 10
+
 typedef struct _Object Object;
 
 Object* object_create(Id id);

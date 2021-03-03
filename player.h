@@ -13,6 +13,8 @@
 
 #include "types.h"
 
+#define PLAYER_ID 102
+
 typedef struct _Player Player;
 
 Player* player_create(Id id);
