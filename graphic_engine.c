@@ -1,3 +1,14 @@
+/**
+ * @brief It implements the game interface and all the associated callbacks
+ * for each command
+ *
+ * @file graphic_engine.c
+ * @author Paloma Ruiz Matesanz
+ * @version 1.0
+ * @date 10-02-2021
+ * @copyright GNU Public License
+ */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "screen.h"
@@ -121,7 +132,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game){
   screen_area_clear(ge->help);
   sprintf(str, " The commands you can use are:");
   screen_area_puts(ge->help, str);
-  sprintf(str, "     next or n, back or b, exit or e");
+  sprintf(str, "     next or n, back or b, exit or e, jump or j, take or t, drop or d");
   screen_area_puts(ge->help, str);
 
   /* Paint in the feedback area */

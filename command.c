@@ -1,4 +1,4 @@
-/** 
+/**
  * @brief It implements the command interpreter
  *
  * @file command.c
@@ -15,7 +15,7 @@
 #define CMD_LENGHT 30
 
 	char *cmd_to_str[N_CMD]
-[N_CMDT] = {{"","No command"}, {"","Unknown"}, {"e","Exit"}, {"n","Next"}, {"b","Back"}};
+[N_CMDT] = {{"","No command"}, {"","Unknown"}, {"e","Exit"}, {"n","Next"}, {"b","Back"}, {"t", "Take"}, {"d", "Drop"}, {"j", "Jump"}};
 
 T_Command get_user_input(){
 T_Command cmd = NO_CMD;char
@@ -28,5 +28,10 @@ if (scanf("%s", input) > 0)	{cmd = UNKNOWN;
 		if (!strcasecmp(input, cmd_to_str[i]		[CMDS])|| !strcasecmp(input, cmd_to_str[i][CMDL]))
 		{
          cmd = i + NO_CMD;
-    } else{i++;}}}return cmd;
+    } else{
+			i++;
+		}
+	}
+}
+return cmd;
 }

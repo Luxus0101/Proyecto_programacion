@@ -3,9 +3,9 @@
  * for each command
  *
  * @file game.h
- * @author Profesores PPROG
+ * @author Paloma Ruiz Matesanz
  * @version 1.0
- * @date 13-01-2015
+ * @date 27-02-2021
  * @copyright GNU Public License
  */
 
@@ -22,6 +22,7 @@ typedef struct _Game{
   Player* player;
   Object* object;
   Space* spaces[MAX_SPACES + 1];
+  T_Command last_cmd;
 } Game;
 
 STATUS game_create(Game* game);
@@ -31,6 +32,7 @@ STATUS game_destroy(Game* game);
 BOOL   game_is_over(Game* game);
 void   game_print_data(Game* game);
 Space* game_get_space(Game* game, Id id);
+STATUS game_add_space(Game* game, Space* space);
 Id     game_get_player_location(Game* game);
 Id     game_get_object_location(Game* game);
 T_Command game_get_last_command(Game* game);

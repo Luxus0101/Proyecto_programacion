@@ -2,10 +2,10 @@
  * @brief Read the game module
  * for each command
  *
- * @file game.h
- * @author Profesores PPROG
+ * @file game_reader.h
+ * @author Paloma Ruiz Matesanz
  * @version 1.0
- * @date 13-01-2015
+ * @date  27-02-2021
  * @copyright GNU Public License
  */
 

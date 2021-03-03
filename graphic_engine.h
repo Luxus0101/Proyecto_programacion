@@ -1,10 +1,11 @@
 /**
- * @brief It defines a textual graphic engine
+ * @brief It implements the game interface and all the associated callbacks
+ * for each command
  *
  * @file graphic_engine.h
- * @author Profesores PPROG
- * @version 2.0
- * @date 07-02-2021
+ * @author Paloma Ruiz Matesanz
+ * @version 1.0
+ * @date 10-02-2021
  * @copyright GNU Public License
  */
 

@@ -2,9 +2,9 @@
  * @brief It defines a space
  *
  * @file space.h
- * @author Profesores PPROG
+ * @author Lucas Piorno Palomo
  * @version 1.0
- * @date 13-01-2015
+ * @date 17-02-2021
  * @copyright GNU Public License
  */
 
@@ -31,8 +31,8 @@ STATUS space_set_east(Space* space, Id id);
 Id space_get_east(Space* space);
 STATUS space_set_west(Space* space, Id id);
 Id space_get_west(Space* space);
-STATUS space_set_object(Space* space, BOOL value);
-BOOL space_get_object(Space* space);
+STATUS space_set_object(Space* space, Id value);
+Id space_get_object(Space* space);
 STATUS space_print(Space* space);
 
 #endif

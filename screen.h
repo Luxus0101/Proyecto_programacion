@@ -2,7 +2,7 @@
  * @brief It defines a screen
  *
  * @file screen.h
- * @author Profesores PPROG
+ * @author Lucas Piorno Palomo
  * @version 2.0
  * @date 07-02-2021
  * @copyright GNU Public License

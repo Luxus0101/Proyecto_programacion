@@ -2,9 +2,9 @@
  * @brief It defines a space
  *
  * @file object.c
- * @author Profesores PPROG
+ * @author Lucas Piorno Palomo
  * @version 1.0
- * @date 13-01-2015
+ * @date  25-02-2021
  * @copyright GNU Public License
  */
 
@@ -13,11 +13,11 @@
 #include <string.h>
 #include "types.h"
 #include "space.h"
+#include "object.h"
 
 struct _Object {
   Id id;
   char name[WORD_SIZE + 1];
-  BOOL object;
 };
 
 Object* object_create(Id id) {
@@ -38,7 +38,7 @@ Object* object_create(Id id) {
   return newObject;
 }
 
-STATUS object_destroy(object* object) {
+STATUS object_destroy(Object* object) {
   if (!object) {
     return ERROR;
   }
@@ -49,7 +49,7 @@ STATUS object_destroy(object* object) {
   return OK;
 }
 
-STATUS object_set_name(object* object, char* name) {
+STATUS object_set_name(Object* object, char* name) {
   if (!object || !name) {
     return ERROR;
   }
@@ -60,23 +60,21 @@ STATUS object_set_name(object* object, char* name) {
   return OK;
 }
 
-const char * object_get_name(object* object) {
+const char * object_get_name(Object* object) {
   if (!object) {
     return NULL;
   }
   return object->name;
 }
 
-Id object_get_id(object* object) {
+Id object_get_id(Object* object) {
   if (!object) {
     return NO_ID;
   }
   return object->id;
 }
 
-STATUS object_print(object* object) {
-  Id idaux = NO_ID;
-
+STATUS object_print(Object* object) {
   if (!object) {
     return ERROR;
   }

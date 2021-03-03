@@ -1,3 +1,13 @@
+/**
+ * @brief It defines a space
+ *
+ * @file screen.c
+ * @author Lucas Piorno Palomo
+ * @version 1.0
+ * @date  25-02-2021
+ * @copyright GNU Public License
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

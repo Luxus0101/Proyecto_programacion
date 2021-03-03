@@ -1,3 +1,13 @@
+/**
+ * @brief It defines a space
+ *
+ * @file space.c
+ * @author Lucas Piorno Palomo
+ * @version 1.0
+ * @date  25-02-2021
+ * @copyright GNU Public License
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -11,7 +21,7 @@ struct _Space {
   Id south;
   Id east;
   Id west;
-  BOOL object;
+  Id object;
 };
 
 Space* space_create(Id id) {
@@ -97,7 +107,7 @@ STATUS space_set_west(Space* space, Id id) {
   return OK;
 }
 
-STATUS space_set_object(Space* space, BOOL value) {
+STATUS space_set_object(Space* space, Id value) {
   if (!space) {
     return ERROR;
   }
@@ -149,7 +159,7 @@ Id space_get_west(Space* space) {
   return space->west;
 }
 
-BOOL space_get_object(Space* space) {
+Id space_get_object(Space* space) {
   if (!space) {
     return FALSE;
   }

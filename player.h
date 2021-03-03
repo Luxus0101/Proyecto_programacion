@@ -1,3 +1,13 @@
+/**
+ * @brief It defines a space
+ *
+ * @file player.c
+ * @author Paloma Ruiz Matesanz
+ * @version 1.0
+ * @date  25-02-2021
+ * @copyright GNU Public License
+ */
+
 #ifndef PLAYER_H
 #define PLAYER_H
 
@@ -11,7 +21,9 @@ Id player_get_id(Player* player);
 STATUS player_set_name(Player* player, char* name);
 const char* player_get_name(Player* player);
 STATUS player_set_location(Player* player, Id id);
-BOOL player_get_object(Player* player);
+Id player_get_object(Player* player);
+Id player_get_location(Player* player);
+STATUS player_set_object(Player* player, Id id);
 STATUS player_print(Player* player);
 
 #endif
