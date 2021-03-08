@@ -1,6 +1,9 @@
 Game: game_loop.o game.o command.o screen.o graphic_engine.o space.o object.o player.o game_reader.o
 	gcc -Wall -pedantic -DDEBUG -o Game game_loop.o game.o screen.o command.o graphic_engine.o space.o object.o player.o game_reader.o
 
+Set_test: set.o set_test.o
+	gcc -Wall -pedantic -DDEBUG -o Set_test set.o set_test.o
+
 game_loop.o: game_loop.c
 	gcc -Wall -pedantic -DDEBUG -c game_loop.c
 
@@ -27,6 +30,12 @@ object.o: object.c
 
 game_reader.o: game_reader.c
 	gcc -Wall -pedantic -DDEBUG -c game_reader.c
+
+set_test.o: set_test.c
+	gcc -Wall -pedantic -DDEBUG -c set_test.c
+
+set.o: set.c
+	gcc -Wall -pedantic -DDEBUG -c set.c
 
 
 clean:

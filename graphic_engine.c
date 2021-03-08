@@ -129,11 +129,46 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game){
   screen_area_puts(ge->banner, " The game of the Goose ");
 
   /* Paint in the help area */
-  screen_area_clear(ge->help);
-  sprintf(str, " The commands you can use are:");
-  screen_area_puts(ge->help, str);
-  sprintf(str, "     next or n, back or b, exit or e, jump or j, take or t, drop or d");
-  screen_area_puts(ge->help, str);
+
+  if(player_get_location(game->player) == game_get_object_location(game)) {
+    if(space_get_east(game->spaces[player_get_location(game->player) - 1]) != NO_ID || space_get_west(game->spaces[player_get_location(game->player) - 1]) != NO_ID){
+      screen_area_clear(ge->help);
+      sprintf(str, " The commands you can use are:");
+      screen_area_puts(ge->help, str);
+      sprintf(str, "     next or n, back or b, exit or e, jump or j, take or t");
+      screen_area_puts(ge->help, str);
+    }
+    else {
+        screen_area_clear(ge->help);
+        sprintf(str, " The commands you can use are:");
+        screen_area_puts(ge->help, str);
+        sprintf(str, "     next or n, back or b, exit or e, take or t");
+        screen_area_puts(ge->help, str);
+    }
+  }
+  else if(player_get_object(game->player) != NO_ID){
+    if(space_get_east(game->spaces[player_get_location(game->player) - 1]) != NO_ID ||space_get_west(game->spaces[player_get_location(game->player) - 1]) != NO_ID){
+      screen_area_clear(ge->help);
+      sprintf(str, " The commands you can use are:");
+      screen_area_puts(ge->help, str);
+      sprintf(str, "     next or n, back or b, exit or e, jump or j, drop or d");
+      screen_area_puts(ge->help, str);
+    }
+    else {
+        screen_area_clear(ge->help);
+        sprintf(str, " The commands you can use are:");
+        screen_area_puts(ge->help, str);
+        sprintf(str, "     next or n, back or b, exit or e, drop or d");
+        screen_area_puts(ge->help, str);
+    }
+  }
+  else {
+    screen_area_clear(ge->help);
+    sprintf(str, " The commands you can use are:");
+    screen_area_puts(ge->help, str);
+    sprintf(str, "     next or n, back or b, exit or e");
+    screen_area_puts(ge->help, str);
+  }
 
   /* Paint in the feedback area */
   last_cmd = game_get_last_command(game);

@@ -302,7 +302,7 @@ void game_callback_drop(Game* game) {
     return;
   }
   space_set_object(game->spaces[i], player_get_object(game->player));
-  player_set_object (game->player, NO_ID);
+  player_set_object(game->player, NO_ID);
   return;
 }
 

@@ -58,6 +58,10 @@ STATUS game_load_spaces(Game* game, char* filename) {
 	space_set_south(space, south);
 	space_set_west(space, west);
   space_set_object(space, object);
+  printf("%ld\n", space_get_north(space));
+  printf("%ld\n", space_get_east(space));
+  printf("%ld\n", space_get_south(space));
+  printf("%ld\n", space_get_west(space));
 	game_add_space(game, space);
       }
     }

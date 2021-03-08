@@ -78,7 +78,7 @@ STATUS player_set_location(Player* player, Id id) {
 }
 
 STATUS player_set_object(Player* player, Id id) {
-  if (!player || id == NO_ID) {
+  if (!player) {
     return ERROR;
   }
   player->object = id;
