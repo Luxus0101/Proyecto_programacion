@@ -4,6 +4,9 @@ Game: game_loop.o game.o command.o screen.o graphic_engine.o space.o object.o pl
 Set_test: set.o set_test.o
 	gcc -Wall -pedantic -DDEBUG -o Set_test set.o set_test.o
 
+Die_test: die.o die_test.o
+	gcc -Wall -pedantic -DDEBUG -o Die_test die.o die_test.o
+
 game_loop.o: game_loop.c
 	gcc -Wall -pedantic -DDEBUG -c game_loop.c
 
@@ -36,6 +39,12 @@ set_test.o: set_test.c
 
 set.o: set.c
 	gcc -Wall -pedantic -DDEBUG -c set.c
+
+die_test.o: die_test.c
+	gcc -Wall -pedantic -DDEBUG -c die_test.c
+
+die.o: die.c
+	gcc -Wall -pedantic -DDEBUG -c die.c
 
 
 clean:

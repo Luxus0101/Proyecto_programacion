@@ -129,7 +129,6 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game){
   screen_area_puts(ge->banner, " The game of the Goose ");
 
   /* Paint in the help area */
-
   if(player_get_location(game->player) == game_get_object_location(game)) {
     if(space_get_east(game->spaces[player_get_location(game->player) - 1]) != NO_ID || space_get_west(game->spaces[player_get_location(game->player) - 1]) != NO_ID){
       screen_area_clear(ge->help);

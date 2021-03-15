@@ -1,3 +1,13 @@
+/**
+ * @brief File to test the functionality of Set module
+ *
+ * @file set_test.c
+ * @author Lucas Piorno Palomo
+ * @version 1.0
+ * @date 08-03-2021
+ * @copyright GNU Public License
+ */
+
 #include <stdio.h>
 #include "set.h"
 #include "types.h"

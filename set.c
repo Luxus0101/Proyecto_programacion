@@ -1,3 +1,13 @@
+/**
+ * @brief Code for Set module
+ *
+ * @file set.c
+ * @author Lucas Piorno Palomo
+ * @version 1.0
+ * @date  08-03-2021
+ * @copyright GNU Public License
+ */
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>

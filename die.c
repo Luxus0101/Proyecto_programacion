@@ -1,10 +1,20 @@
+/**
+ * @brief Code for Die module
+ *
+ * @file die.c
+ * @author Lucas Piorno Palomo
+ * @version 1.0
+ * @date  25-02-2021
+ * @copyright GNU Public License
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include "die.h"
 #include "types.h"
 
-struct _Die {
+struct _Die{
   Id id;
   int min_val;
   int max_val;
@@ -14,14 +24,18 @@ struct _Die {
 Die *die_create(Id id, int min, int max){
   Die *d = NULL;
 
-  if(id == NO_ID) return NULL;
+  if(id == NO_ID || !(max)|| !(min)) return NULL;
 
   d = (Die *) malloc(sizeof(Die));
+
+  if(!d) return NULL;
+
   d->id = id;
   d->min_val = min;
   d->max_val = max;
+  d->last_state = NO_LAST_STATE;
 
-  return OK;
+  return d;
 }
 
 STATUS die_destroy(Die *die){
@@ -36,16 +50,15 @@ STATUS die_destroy(Die *die){
 STATUS die_roll(Die *die){
   if(!die) return ERROR;
 
-  srand(time(NULL));
   die->last_state = die->min_val + (rand() % die->max_val);
 
   return OK;
 }
 
 STATUS die_print(FILE *f, Die *die){
-  if(!die) return ERROR;
+  if(!die || !f || !(die->last_state)) return ERROR;
 
-  fprintf(f, "Die %d:\nMin value: %d\nMax value: %d\nLast value rolled: %d\n", die->id, die->min_val, die->max_val, die->last_state);
+  fprintf(f, "Die %ld:\nMin value: %d\nMax value: %d\nLast value rolled: %d\n", die->id, die->min_val, die->max_val, die->last_state);
 
   return OK;
 }
@@ -55,6 +68,7 @@ int die_getMin(Die *die){
 
   return die->min_val;
 }
+
 STATUS die_setMin(Die *die, int min){
   if(!die) return ERROR;
 

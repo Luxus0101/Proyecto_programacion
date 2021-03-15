@@ -3,8 +3,8 @@
  *
  * @file set.h
  * @author Lucas Piorno Palomo
- * @version 2.0
- * @date 07-02-2021
+ * @version 1.0
+ * @date 08-03-2021
  * @copyright GNU Public License
  */
 
@@ -30,8 +30,7 @@ Set *set_create();
  *
  * @param set Pointer to the set to be deallocated.
  *
- * @return Returns OK if the destroyed could be destroyed (or if it exists
- * already), ERROR otherwise.
+ * @return Returns OK if the set could be destroyed, ERROR otherwise.
  **/
 STATUS set_destroy(Set *set);
 
