@@ -59,7 +59,7 @@ long set_get_num_ids(Set *s);
  * @param s
  * @return STATUS
  */
-STATUS set_print(FILE *pf, Set *s);
+STATUS set_print(Set *s);
 /**
  * @brief Gets an array with the Ids stored in a Set
  *
