@@ -1,67 +1,76 @@
-/**
- * @brief Provides functionality for id sets
- *
- * @file set.h
- * @author Lucas Piorno Palomo
- * @version 1.0
- * @date 08-03-2021
- * @copyright GNU Public License
- */
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "types.h"
 
 #ifndef SET_H
 #define SET_H
 
-#include "types.h"
-#include <stdlib.h>
-
-#define SET_MAX_SIZE 100
+#define ID_SIZE 4000
 
 typedef struct _Set Set;
-
 /**
- * @brief Creates a new set and initializes its fiels.
-
- * @return Returns a pointer to a Set structure.
- **/
+ * @brief creates a set like structure
+ *
+ * @return Set*
+ */
 Set *set_create();
-
 /**
- * @brief Destroys the given set and deallocates memory.
+ * @brief Destroys a set like structure
  *
- * @param set Pointer to the set to be deallocated.
- *
- * @return Returns OK if the set could be destroyed, ERROR otherwise.
- **/
-STATUS set_destroy(Set *set);
-
+ * @param s
+ * @return STATUS
+ */
+STATUS set_destroy(Set *s);
 /**
- * @brief Adds a new Id to the set.
+ * @brief adds an id to the set
  *
- * @param set Pointer to the set.
- * @param id Id to be added.
- *
- * @return Returns OK if the Id could be added, ERROR otherwise.
- **/
-STATUS set_add(Set *set, Id id);
-
+ * @param s
+ * @param id
+ * @return STATUS
+ */
+STATUS set_add(Set *s, Id id);
 /**
- * @brief Removes an id from the structure.
+ * @brief deletes an id from the set
  *
- * @param set Pointer to the set.
- * @param id Id to be removed
- *
- * @return Returns OK if the id could be removed, ERROR otherwise.
- **/
-STATUS set_del(Set *set, Id id);
-
+ * @param s
+ * @param id
+ * @return STATUS
+ */
+STATUS set_del_id(Set *s, Id id);
 /**
- * @brief Prints the contents of a set.
+ * @brief checks if an id is found inside of a set
  *
- * @param f Pointer to the output file.
- * @param set Pointer to the set to be deallocated.
+ * @param s
+ * @param id
+ * @return BOOL
+ */
+BOOL _set_exist_id(Set *s, Id id);
+/**
+ * @brief obtains the number of ids stored in a set
  *
- * @return Returns OK if the set could be printed, ERROR otherwise.
- **/
-STATUS set_print(FILE *f, Set *set);
+ * @param s
+ * @return long
+ */
+long set_get_num_ids(Set *s);
+/**
+ * @brief prints the elements contained inside of a set
+ *
+ * @param s
+ * @return STATUS
+ */
+STATUS set_print(FILE *pf, Set *s);
+/**
+ * @brief Gets an array with the Ids stored in a Set
+ *
+ * @param s A pointer to the set
+ *
+ * @return A pointer to the Ids
+ */
+long *set_getVectors(Set *s);
+
+
+long set_get_id(Set *s, int i);
+
 
 #endif

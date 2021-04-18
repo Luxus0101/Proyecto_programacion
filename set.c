@@ -1,101 +1,154 @@
-/**
- * @brief Code for Set module
- *
- * @file set.c
- * @author Lucas Piorno Palomo
- * @version 1.0
- * @date  08-03-2021
- * @copyright GNU Public License
- */
-
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
-#include "set.h"
+#include <string.h>
 #include "types.h"
+#include "set.h"
 
-struct _Set{
-  Id *id_vector;
-  int number_of_ids;
+struct _Set
+{
+    Id vectors[ID_SIZE];
+    long num_ids;
 };
 
-Set *set_create(){
-  Set *set = NULL;
-  Id *id_vector;
-  int i;
-  set = (Set *)malloc(sizeof(Set));
-  id_vector = (Id *)malloc(SET_MAX_SIZE*sizeof(Id));
+Set *set_create()
+{
 
-  set->id_vector = id_vector;
+    Set *s = NULL;
 
-  if(!set) return NULL;
-
-  for(i = 0; i < SET_MAX_SIZE; i++){
-    set->id_vector[i] = NO_ID;
-  }
-
-  set->number_of_ids = 0;
-
-  return set;
-}
-
-STATUS set_destroy(Set *set){
-  if(!set) return ERROR;
-
-  free(set);
-  set = NULL;
-
-  return OK;
-}
-
-STATUS set_add(Set *set, Id id){
-  int i;
-
-  if(!set || id == NO_ID) return ERROR;
-
-  for(i = 0; i < set->number_of_ids; i++){
-  if(set->id_vector[i] == id) {
-    return ERROR;
+    if (!(s = (Set *)malloc(sizeof(Set))))
+    {
+        return NULL;
     }
-  }
-
-  set->id_vector[set->number_of_ids] = id;
-  set->number_of_ids++;
-
-  return OK;
-}
-
-STATUS set_del(Set *set, Id id){
-  int i;
-  short id_found = 0;
-
-  if(!set || id < 0) return ERROR;
-
-  for(i = 0; i < set->number_of_ids; i++){
-    if(set->id_vector[i] == id) {
-      id_found = 1;
+    for (int i = 0; i < ID_SIZE; i++)
+    {
+        s->vectors[i] = 0;
     }
-    if(id_found && i < SET_MAX_SIZE-1) set->id_vector[i] = set->id_vector[i+1];
-    else if(id_found) set->id_vector[i] = NO_ID;
-  }
-  if(!id_found) return ERROR;
+    s->num_ids = 0;
 
-  set->number_of_ids--;
+    return s;
+}
+STATUS set_destroy(Set *s)
+{
 
-  return OK;
+    if (s == NULL)
+    {
+        return ERROR;
+    }
 
+    free(s);
+
+    s = NULL;
+
+    return OK;
+}
+STATUS set_add(Set *s, Id id)
+{
+    if (s == NULL || id < 0 || id > ID_SIZE)
+    {
+        return ERROR;
+    }
+
+    s->vectors[s->num_ids] = id;
+
+    s->num_ids++;
+
+    return OK;
+}
+STATUS set_del_id(Set *s, Id id)
+{
+    if (s == NULL || id < 0 || id > ID_SIZE)
+    {
+        return ERROR;
+    }
+    int i;
+
+    for (i = 0; i < s->num_ids && i < ID_SIZE; i++)
+    {
+        if (id == s->vectors[i])
+            break;
+    }
+
+    if (i == (s->num_ids - 1))
+    {
+        s->vectors[i] = NO_ID;
+        s->num_ids--;
+        return OK;
+    }
+
+    else
+    {
+        s->num_ids--;
+
+        s->vectors[i] = s->vectors[s->num_ids];
+
+        s->vectors[s->num_ids] = NO_ID;
+    }
+    return OK;
+}
+STATUS set_print(Set *s)
+{
+    if (s == NULL)
+    {
+        return ERROR;
+    }
+
+    fprintf(stdout, "set includes: %ld, from which we obtain the following vectors: ", s->num_ids);
+
+    for (int i = 0; i < s->num_ids && i < ID_SIZE; i++)
+    {
+        fprintf(stdout, "%ld ", s->vectors[i]);
+    }
+
+    return OK;
+}
+BOOL _set_exist_id(Set *s, Id id)
+{
+    if (s == NULL || id < 0)
+    {
+        return FALSE;
+    }
+    int i;
+    for (i = 0; i < ID_SIZE && i < s->num_ids; i++)
+    {
+        if (id == s->vectors[i])
+            return TRUE;
+    }
+
+    return FALSE;
 }
 
-STATUS set_print(FILE *f, Set *set){
-  int i;
+long set_get_id(Set *s, int i)
+{
+    if (s == NULL)
+    {
+        return -1;
+    }
+    return s->vectors[i];
+}
+long set_get_num_ids(Set *s)
+{
+    if (s == NULL)
+    {
+        return -1;
+    }
+    return s->num_ids;
+}
 
-  if(!set || !f) return ERROR;
+long *set_getVectors(Set *s)
+{
+    if (s == NULL)
+    {
+        return NULL;
+    }
+    long *nv;
+    if (!(nv = (long *)calloc(s->num_ids, sizeof(long))))
+    {
+        return NULL;
+    }
+    for (int i = 0; i < s->num_ids; i++)
+    {
+        nv[i]=s->vectors[i];
+    }
 
-  fprintf(f, "Set: ");
-  for(i = 0; i < set->number_of_ids; i++){
-    fprintf(f, "%ld ", set->id_vector[i]);
-  }
-  fprintf(f, "\n");
-
-  return OK;
+    return nv;
 }

@@ -2,9 +2,9 @@
  * @brief It defines common types
  *
  * @file types.h
- * @author Lucas Piorno Palomo
+ * @author Profesores PPROG
  * @version 1.0
- * @date 21-02-2021
+ * @date 13-01-2015
  * @copyright GNU Public License
  */
 
@@ -16,16 +16,24 @@
 
 typedef long Id;
 
-typedef enum {
-  FALSE, TRUE
+typedef enum
+{
+  FALSE,
+  TRUE
 } BOOL;
 
-typedef enum {
-  ERROR, OK
+typedef enum
+{
+  ERROR,
+  OK
 } STATUS;
 
-typedef enum {
-  N, S, E, W
+typedef enum
+{
+  N,
+  S,
+  E,
+  W
 } DIRECTION;
 
 #endif

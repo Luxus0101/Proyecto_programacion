@@ -2,9 +2,9 @@
  * @brief It implements the command interpreter
  *
  * @file command.h
- * @author Paloma Ruiz Matesanz
+ * @author Profesores PPROG
  * @version 2.0
- * @date 22-02-2021
+ * @date 13-01-2020
  * @copyright GNU Public License
  */
 
@@ -12,13 +12,16 @@
 #define COMMAND_H
 
 #define N_CMDT 2
-#define N_CMD 8
+#define N_CMD 10
 
-typedef enum enum_CmdType {
+typedef enum enum_CmdType
+{
   CMDS,
-  CMDL} T_CmdType;
+  CMDL
+} T_CmdType;
 
-typedef enum enum_Command {
+typedef enum enum_Command
+{
   NO_CMD = -1,
   UNKNOWN,
   EXIT,
@@ -26,8 +29,11 @@ typedef enum enum_Command {
   BACK,
   TAKE,
   DROP,
-  JUMP } T_Command;
-
+  ROLL,
+  LEFT,
+  RIGHT,
+} T_Command;
+char *change_command_to_string(T_Command cmd);
 T_Command get_user_input();
 
 #endif
