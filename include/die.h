@@ -26,7 +26,7 @@ typedef struct _Die Die;
  *
  * @return Returns a pointer to a die if it could be created, NULL otherwise.
  **/
-Die *die_create(Id id, int min, int max);
+Die *die_create(Id id);
 
 /**
  * @brief Destroys the given die and deallocates memory.
@@ -63,7 +63,7 @@ STATUS die_print(FILE *f, Die *die);
  *
  * @return Returns die->min_val, ERROR if die doesnt exists.
  **/
-int die_getMin(Die *die);
+int die_get_min(Die *die);
 
 /**
  * @brief Assigns a new value to the given die's minimal value.
@@ -73,7 +73,7 @@ int die_getMin(Die *die);
  *
  * @return Returns OK if the value could be changed, ERROR if die doesnt exists or min isn't a valid number.
  **/
-STATUS die_setMin(Die *die, int min);
+STATUS die_set_min(Die *die, int min);
 
 /**
  * @brief Returns the given die's maximum value.
@@ -82,7 +82,7 @@ STATUS die_setMin(Die *die, int min);
  *
  * @return Returns die->max_val, ERROR if die doesnt exists.
  **/
-int die_getMax(Die *die);
+int die_get_max(Die *die);
 
 /**
  * @brief Assigns a new value to the given die's maximum value.
@@ -92,7 +92,7 @@ int die_getMax(Die *die);
  *
  * @return Returns OK if the value could be changed, ERROR if die doesnt exists or max isn't a valid number.
  **/
-STATUS die_setMax(Die *die, int max);
+STATUS die_set_max(Die *die, int max);
 
 /**
  * @brief Returns the given die's id.
@@ -101,7 +101,7 @@ STATUS die_setMax(Die *die, int max);
  *
  * @return Returns die->id, ERROR if die doesnt exists.
  **/
-Id die_getId(Die *die);
+Id die_get_id(Die *die);
 
 /**
  * @brief Assigns a new value to the given die's id.
@@ -111,7 +111,7 @@ Id die_getId(Die *die);
  *
  * @return Returns OK if the value could be changed, ERROR if die doesnt exists or id isn't a valid value.
  **/
-STATUS die_setId(Die *die, Id id);
+STATUS die_set_id(Die *die, Id id);
 
 /**
  * @brief Returns the given die's last state.
@@ -120,7 +120,7 @@ STATUS die_setId(Die *die, Id id);
  *
  * @return Returns die->last_state, ERROR if die doesnt exists.
  **/
-int die_getLastState(Die *die);
+int die_last_roll(Die *die);
 
 
 #endif

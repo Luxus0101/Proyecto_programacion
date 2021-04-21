@@ -4,58 +4,12 @@
 #include "game.h"
 #include "space.h"
 
-STATUS game_add_object(Game *game, Object *object)
-{
-  int i = 0;
-
-  if (object == NULL)
-  {
-    return ERROR;
-  }
-
-  while ((i < MAX_OBJECTS) && (game->object[i] != NULL))
-  {
-    i++;
-  }
-
-  if (i >= MAX_OBJECTS)
-  {
-    return ERROR;
-  }
-
-  game->object[i] = object;
-
-  return OK;
-}
-STATUS game_add_space(Game *game, Space *space)
-{
-  int i = 0;
-
-  if (space == NULL)
-  {
-    return ERROR;
-  }
-
-  while ((i < MAX_SPACES) && (game->spaces[i] != NULL))
-  {
-    i++;
-  }
-
-  if (i >= MAX_SPACES)
-  {
-    return ERROR;
-  }
-
-  game->spaces[i] = space;
-
-  return OK;
-}
-
 STATUS game_load_spaces(Game *game, char *filename)
 {
   FILE *file = NULL;
   char line[WORD_SIZE] = "";
   char name[WORD_SIZE] = "";
+  char sdesc[WORD_SIZE] = "";
   char *gdesc[NUM_SHAPES];
   for (int i = 0; i < NUM_SHAPES; i++)
   {
@@ -115,6 +69,10 @@ STATUS game_load_spaces(Game *game, char *filename)
           break;
         }
       }
+      toks = strtok(NULL, "|");
+      if(toks)
+      strcpy(sdesc, toks);
+
 
 #ifdef DEBUG
       printf("Leido: %ld|%s|%ld|%ld|%ld|%ld|%s|%s|%s\n", id, name, north, east, south, west, gdesc[0], gdesc[1], gdesc[2]);
@@ -130,6 +88,7 @@ STATUS game_load_spaces(Game *game, char *filename)
         space_setDesc(space, gdesc[0], 0);
         space_setDesc(space, gdesc[1], 1);
         space_setDesc(space, gdesc[2], 2);
+        space_set_description(space, sdesc);
         game_add_space(game, space);
       }
     }
@@ -149,31 +108,12 @@ STATUS game_load_spaces(Game *game, char *filename)
   return status;
 }
 
-Space *game_get_space(Game *game, Id id)
-{
-  int i = 0;
-
-  if (id == NO_ID)
-  {
-    return NULL;
-  }
-
-  for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++)
-  {
-    if (id == space_get_id(game->spaces[i]))
-    {
-      return game->spaces[i];
-    }
-  }
-
-  return NULL;
-}
-
 STATUS game_load_objects(Game *game, char *filename)
 {
   FILE *file = NULL;
   char line[WORD_SIZE] = "";
   char name[WORD_SIZE] = "";
+  char desc[WORD_SIZE] = "\0";
   char *toks = NULL;
   Id id = NO_ID, id_space = NO_ID;
   Object *object = NULL;
@@ -200,6 +140,9 @@ STATUS game_load_objects(Game *game, char *filename)
       strcpy(name, toks);
       toks = strtok(NULL, "|");
       id_space = atol(toks);
+      toks = strtok(NULL, "|");
+      if(toks)
+      strcpy(desc, toks);
 
 #ifdef DEBUG
       printf("Leido: %ld|%s|%ld\n", id, name, id_space);
@@ -208,6 +151,7 @@ STATUS game_load_objects(Game *game, char *filename)
       if (object != NULL)
       {
         object_set_name(object, name);
+        object_set_description(object, desc);
         game_add_object(game, object);
         game_set_object_location(game, id_space, id);
       }
@@ -223,7 +167,64 @@ STATUS game_load_objects(Game *game, char *filename)
 
   return status;
 }
+STATUS game_load_player(Game *game, char *filename)
+{
+  FILE *file = NULL;
+  char line[WORD_SIZE] = "";
+  char name[WORD_SIZE] = "";
+  char *toks = NULL;
+  Id id = NO_ID, id_player = NO_ID;
+  int inv_size;
+  Player *player = NULL;
+  STATUS status = OK;
 
+  if (!filename)
+  {
+    return ERROR;
+  }
+
+  file = fopen(filename, "r");
+  if (file == NULL)
+  {
+    return ERROR;
+  }
+
+  while (fgets(line, WORD_SIZE, file))
+  {
+    if (strncmp("#p:", line, 3) == 0)
+    {
+      toks = strtok(line + 3, "|");
+      id = atol(toks);
+      toks = strtok(NULL, "|");
+      strcpy(name, toks);
+      toks = strtok(NULL, "|");
+      id_player = atol(toks);
+      toks = strtok(NULL, "|");
+      inv_size = atol(toks);
+
+#ifdef DEBUG
+      printf("Leido: %ld|%s|%ld|%d\n", id, name, id_player, inv_size);
+#endif
+      player = player_create(id);
+      if (player != NULL)
+      {
+        player_set_name(player, name);
+        player_set_inventory_max(player, inv_size);
+        game_add_player(game, player);
+        game_set_player_location(game, id_player);
+      }
+    }
+  }
+
+  if (ferror(file))
+  {
+    status = ERROR;
+  }
+
+  fclose(file);
+
+  return status;
+}
 STATUS game_load_links(Game *game, char *filename)
 {
   FILE *file = NULL;
@@ -232,7 +233,7 @@ STATUS game_load_links(Game *game, char *filename)
   char *toks = NULL;
   Id id = NO_ID, id_space1 = NO_ID, id_space2 = NO_ID;
   Link *link = NULL;
-  LINK_ST Lst=OPEN;
+  LINK_ST Lst = OPEN;
   STATUS status = OK;
 
   if (!filename)
@@ -271,6 +272,7 @@ STATUS game_load_links(Game *game, char *filename)
         link_setId(link, id);
         link_setConnections(link, id_space1, id_space2);
         link_setStatus(link, Lst);
+        game_add_link(game, link);
       }
     }
   }

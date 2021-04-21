@@ -1,18 +1,10 @@
-/**
- * @brief It implements the links module
- *
- * @file links.h
- * @author Enrique Ortega Yegros
- * @version 1.0
- * @date 11-04-2021
- */
-#include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 #include "types.h"
 
 #ifndef LINKS_H
 #define LINKS_H
+
+#define MAX_LINKS 100
 
 /**
  * @brief Link ADT to connect spaces
@@ -105,4 +97,4 @@ LINK_ST link_getStatus(Link *l);
  */
 STATUS link_print(Link *l);
 
-#endif
+#endif 

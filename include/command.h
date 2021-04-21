@@ -12,7 +12,7 @@
 #define COMMAND_H
 
 #define N_CMDT 2
-#define N_CMD 10
+#define N_CMD 12
 
 typedef enum enum_CmdType
 {
@@ -32,6 +32,8 @@ typedef enum enum_Command
   ROLL,
   LEFT,
   RIGHT,
+  MOVE,
+  INSPECT
 } T_Command;
 char *change_command_to_string(T_Command cmd);
 T_Command get_user_input();

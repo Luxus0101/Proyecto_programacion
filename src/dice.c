@@ -1,5 +1,5 @@
-
 #include "dice.h"
+
 struct _Dice
 {
     Id id;
@@ -44,7 +44,7 @@ STATUS dice_roll(Dice *dice)
     if (dice->minimum < dice->maximum)
     {
         low_num = dice->minimum;
-        hi_num = dice->maximum + 1; 
+        hi_num = dice->maximum + 1;
     }
     else
     {
@@ -84,5 +84,5 @@ int dice_last_roll (Dice *dice)
         return -1;
     }
 
-    return dice->last_roll; 
+    return dice->last_roll;
 }

@@ -1,10 +1,10 @@
-/** 
+/**
  * @brief It implements the command interpreter
- * 
+ *
  * @file command.c
  * @author Profesores PPROG
- * @version 2.0 
- * @date 13-01-2020 
+ * @version 2.0
+ * @date 13-01-2020
  * @copyright GNU Public License
  */
 
@@ -27,7 +27,9 @@ char *cmd_to_str[N_CMD][N_CMDT] =
 		{"d", "Drop"},
 		{"rl", "Roll"},
 		{"r", "Right"},
-		{"l", "Left"}};
+		{"l", "Left"},
+		{"m", "Move"},
+		{"i", "Inspect"}};
 
 T_Command get_user_input()
 {

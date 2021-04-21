@@ -20,8 +20,8 @@ int main(){
   Die *die1 = NULL;
   Die *die2 = NULL;
 
-  die1 = die_create(255, 1, 6);
-  die2 = die_create(255, 4, 8);
+  die1 = die_create(255);
+  die2 = die_create(5);
 
   if(!die1 | !die2) return ERROR;
 
@@ -31,7 +31,7 @@ int main(){
   die_print(stdout, die1);
 
   die_roll(die2);
-  die_setId(die2, 45);
+  die_set_id(die2, 45);
   die_print(stdout, die2);
   die_roll(die2);
   die_print(stdout, die2);

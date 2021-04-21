@@ -12,6 +12,7 @@ struct _Space
   Id id;
   char name[WORD_SIZE + 1];
   char *gdesc[NUM_SHAPES];
+  char desc[WORD_SIZE + 1];
   Id north;
   Id south;
   Id east;
@@ -47,10 +48,10 @@ Space *space_create(Id id)
     (newSpace->gdesc[i])[0] = '\0';
   }
 
-  newSpace->north = NULL;
-  newSpace->south = NULL;
-  newSpace->east = NULL;
-  newSpace->west = NULL;
+  newSpace->north = NO_ID;
+  newSpace->south = NO_ID;
+  newSpace->east = NO_ID;
+  newSpace->west = NO_ID;
 
   newSpace->objects = set_create();
   if (newSpace->objects == NULL)
@@ -71,10 +72,7 @@ STATUS space_destroy(Space *space)
   {
     return ERROR;
   }
-  link_free(space->north);
-  link_free(space->south);
-  link_free(space->east);
-  link_free(space->west);
+
 
   for (int i = 0; i < NUM_SHAPES; i++)
   {
@@ -280,7 +278,7 @@ STATUS space_print(Space *space)
     fprintf(stdout, "\n%s", space->gdesc[i]);
   }
 
-  laux = space_get_north(space);
+ link_setId(laux, space_get_north(space));
   if (NULL != laux)
   {
     link_print(laux);
@@ -290,7 +288,7 @@ STATUS space_print(Space *space)
     fprintf(stdout, "---> No north link.\n");
   }
 
-  laux = space_get_south(space);
+  link_setId(laux, space_get_south(space));
   if (NULL != laux)
   {
     link_print(laux);
@@ -300,7 +298,7 @@ STATUS space_print(Space *space)
     fprintf(stdout, "---> No south link.\n");
   }
 
-  laux = space_get_east(space);
+  link_setId(laux, space_get_east(space));
   if (NULL != laux)
   {
     link_print(laux);
@@ -310,7 +308,7 @@ STATUS space_print(Space *space)
     fprintf(stdout, "---> No east link.\n");
   }
 
-  laux = space_get_west(space);
+  link_setId(laux, space_get_west(space));
   if (NULL != laux)
   {
     link_print(laux);
@@ -396,4 +394,16 @@ BOOL space_areConnected(Space *space1, Space *space2)
   {
     return 1;
   }
+  return 0;
+}
+
+STATUS space_set_description(Space *space, char *desc){
+  if(!space || desc == NULL) return ERROR;
+  strcpy(space->desc, desc);
+  return OK;
+}
+
+char *space_get_description(Space *space){
+  if(!space) return NULL;
+  return space->desc;
 }

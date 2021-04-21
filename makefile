@@ -1,8 +1,38 @@
-game: output
-	gcc -o game *.o
+SOURCEDIR = src
+HEADERDIR = include
+OBJDIR = obj
 
-output: command.c command.h game.c game.h game_loop.c graphic_engine.c graphic_engine.h screen.c screen.h space.c space.h types.h game_reader.c game_reader.h player.c player.h object.c object.h set.c set.h dice.c dice.h
-	gcc -Wall -c  *.c
+OBJGAME = $(OBJDIR)/game.o $(OBJDIR)/game_loop.o $(OBJDIR)/command.o $(OBJDIR)/die.o $(OBJDIR)/game_reader.o $(OBJDIR)/graphic_engine.o $(OBJDIR)/object.o $(OBJDIR)/player.o $(OBJDIR)/screen.o $(OBJDIR)/set.o $(OBJDIR)/space.o $(OBJDIR)/space.o $(OBJDIR)/links.o $(OBJDIR)/inventory.o
+
+CC = gcc
+CFLAGS = -g -Wall -pedantic -I $(HEADERDIR)
+
+EXS = game set_test die_test
+
+.PHONY: all clean clear
+
+all: clear $(EXS) clean
+
+game: $(OBJGAME)
+	@echo "==> Compiling and linking $@"
+	$(CC) $(CFLAGS) -o $@ $^
+
+set_test: $(OBJDIR)/set_test.o $(OBJDIR)/set.o
+	@echo "==> Compiling and linking $@"
+	$(CC) $(CFLAGS) -o $@ $^
+
+die_test: $(OBJDIR)/die_test.o $(OBJDIR)/die.o
+	@echo "Compiling and linking $@"
+	$(CC) $(CFLAGS) -o $@ $^
+
+$(OBJDIR)/%.o: $(SOURCEDIR)/%.c
+	@echo "==> Generating $@"
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
-	rm *.o
+	@echo "==> Removing object files"
+	rm -f $(OBJDIR)/*.o
+
+clear:
+	@echo "==> Removing object files and executables"
+	rm -f $(EXS) $(OBJDIR)/*.o

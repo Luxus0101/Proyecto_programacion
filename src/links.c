@@ -7,6 +7,8 @@
  * @date 13-04-2021
  */
 
+#include <stdio.h>
+#include <stdlib.h>
 #include "links.h"
 
 #define MAX_CHAR 100
@@ -17,7 +19,7 @@
 struct _Link
 {
     Id id;
-    char *name;
+    char name[MAX_CHAR];
     Id link1;
     Id link2;
     LINK_ST st;
@@ -140,7 +142,7 @@ Id link_getConnection2(Link *l)
     {
         return -1;
     }
-    
+
     return l->link2;
 }
 
@@ -156,18 +158,19 @@ LINK_ST link_getStatus(Link *l)
 
 STATUS link_print(Link *l)
 {
-    if (l==NULL)
+    if (l == NULL)
     {
         return ERROR;
     }
 
-    fprintf(stdout, "Link id: %ld\nName:%s\nSpace 1 ID: %ld\nSpace 2 ID: %ld\n");
-    if (l->st==OPEN)
+    fprintf(stdout, "Link id: %ld\nName:%s\nSpace 1 ID: %ld\nSpace 2 ID: %ld\n", l->id, l->name, l->link1, l->link2);
+    if (l->st == OPEN)
     {
         fprintf(stdout, "Status: OPEN");
-    }else
+    }
+    else
     {
         fprintf(stdout, "Status: CLOSED");
     }
-    
+return OK;
 }

@@ -51,4 +51,7 @@ STATUS space_setDesc(Space *space, char *desc, int index);
  * @return TRUE if they are connected or FALSE otherwise
  */
 BOOL space_areConnected(Space *space1, Space *space2);
+char *space_get_description(Space *space);
+STATUS space_set_description(Space *space, char *desc);
+
 #endif

@@ -22,12 +22,12 @@ int main(){
   set_add(set, id3);
   set_add(set, id2);
 
-  set_print(stdout, set);
+  set_print(set);
 
-  set_del(set, id2);
-  set_del(set, 40);
+  set_del_id(set, id2);
+  set_del_id(set, 40);
 
-  set_print(stdout, set);
+  set_print(set);
 
   set_destroy(set);
 

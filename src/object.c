@@ -8,6 +8,7 @@ struct _Object
 {
     Id id;
     char name[WORD_SIZE + 1];
+    char desc[WORD_SIZE];
 };
 
 Object *object_create(Id id)
@@ -98,4 +99,15 @@ Id object_get_id(Object *object)
     return NO_ID;
   }
   return object->id;
+}
+
+STATUS object_set_description(Object *object, char *desc){
+  if(!object) return ERROR;
+  strcpy(object->desc, desc);
+  return OK;
+}
+
+char *object_get_description(Object *object){
+  if(!object) return NULL;
+  return object->desc;
 }

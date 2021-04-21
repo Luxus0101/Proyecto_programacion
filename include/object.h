@@ -64,4 +64,21 @@ STATUS object_set_id(Object *object, Id id);
  */
 Id object_get_id(Object *object);
 
+/**
+ * @brief gives a certain description to an object structre
+ *
+ * @param object
+ * @param description
+ * @return STATUS
+ */
+STATUS object_set_description(Object *object, char *desc);
+
+/**
+ * @brief finds the description for a determined object
+ *
+ * @param object
+ * @return const char*
+ */
+char *object_get_description(Object *object);
+
 #endif

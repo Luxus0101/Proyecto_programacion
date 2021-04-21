@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
     }
   }
   game=game_create();
-  
+
   if (!game_loop_init(game, &gengine, argv[1]))
   {
     game_loop_run(game, gengine, f1);
@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
   {
     fclose(f1);
   }
-  
+
   return 0;
 }
 
