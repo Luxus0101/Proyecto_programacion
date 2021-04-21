@@ -1,7 +1,4 @@
-#include "command.h"
-#include "space.h"
 #include "object.h"
-#include "dice.h"
 
 #ifndef INVENTORY_H
 #define INVENTORY_H
