@@ -1,0 +1,83 @@
+\hypertarget{command_8c}{}\doxysection{src/command.c File Reference}
+\label{command_8c}\index{src/command.c@{src/command.c}}
+
+
+It implements the command interpreter.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}command.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+Include dependency graph for command.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{command_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{command_8c_a2b1bd24d2eddf8081d8c541e4cc4fd4b}\label{command_8c_a2b1bd24d2eddf8081d8c541e4cc4fd4b}} 
+\#define {\bfseries C\+M\+D\+\_\+\+L\+E\+N\+G\+HT}~30
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{command_8c_afe107f7479f6f9f3eab2078508fdfd55}\label{command_8c_afe107f7479f6f9f3eab2078508fdfd55}} 
+T\+\_\+\+Command {\bfseries get\+\_\+user\+\_\+input} ()
+\item 
+\mbox{\Hypertarget{command_8c_a8ea7547caf3c511ed003af69d2e7a0b6}\label{command_8c_a8ea7547caf3c511ed003af69d2e7a0b6}} 
+char $\ast$ {\bfseries change\+\_\+command\+\_\+to\+\_\+string} (T\+\_\+\+Command cmd)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ {\bfseries cmd\+\_\+to\+\_\+str} \mbox{[}N\+\_\+\+C\+MD\mbox{]}\mbox{[}N\+\_\+\+C\+M\+DT\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+It implements the command interpreter. 
+
+\begin{DoxyAuthor}{Author}
+Profesores P\+P\+R\+OG 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+2.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+13-\/01-\/2020 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+G\+NU Public License 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{command_8c_a3574ce85761f52cf9b70d061831533ee}\label{command_8c_a3574ce85761f52cf9b70d061831533ee}} 
+\index{command.c@{command.c}!cmd\_to\_str@{cmd\_to\_str}}
+\index{cmd\_to\_str@{cmd\_to\_str}!command.c@{command.c}}
+\doxysubsubsection{\texorpdfstring{cmd\_to\_str}{cmd\_to\_str}}
+{\footnotesize\ttfamily char$\ast$ cmd\+\_\+to\+\_\+str\mbox{[}N\+\_\+\+C\+MD\mbox{]}\mbox{[}N\+\_\+\+C\+M\+DT\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{        \{\textcolor{stringliteral}{""}, \textcolor{stringliteral}{"No command"}\},}
+\DoxyCodeLine{        \{\textcolor{stringliteral}{""}, \textcolor{stringliteral}{"Unknown"}\},}
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"e"}, \textcolor{stringliteral}{"Exit"}\},}
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"n"}, \textcolor{stringliteral}{"Next"}\},}
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"b"}, \textcolor{stringliteral}{"Back"}\},}
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"t"}, \textcolor{stringliteral}{"Take"}\},}
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"d"}, \textcolor{stringliteral}{"Drop"}\},}
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"rl"}, \textcolor{stringliteral}{"Roll"}\},}
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"r"}, \textcolor{stringliteral}{"Right"}\},}
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"l"}, \textcolor{stringliteral}{"Left"}\},}
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"m"}, \textcolor{stringliteral}{"Move"}\},}
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"i"}, \textcolor{stringliteral}{"Inspect"}\}\}}
+
+\end{DoxyCode}

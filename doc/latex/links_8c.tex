@@ -1,0 +1,291 @@
+\hypertarget{links_8c}{}\doxysection{src/links.c File Reference}
+\label{links_8c}\index{src/links.c@{src/links.c}}
+
+
+It implements the links module.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}links.\+h\char`\"{}}\newline
+Include dependency graph for links.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{links_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct__Link}{\+\_\+\+Link}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{links_8c_a82acb32225c05e9aa4c524c40bc5852a}\label{links_8c_a82acb32225c05e9aa4c524c40bc5852a}} 
+\#define {\bfseries M\+A\+X\+\_\+\+C\+H\+AR}~100
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct__Link}{Link}} $\ast$ \mbox{\hyperlink{links_8c_aaf21d03943afcbed370ca720f972482c}{link\+\_\+create}} ()
+\begin{DoxyCompactList}\small\item\em Creates a link and returns a pointer to the link. It sets the link Id to -\/1, the spaces links are set to 0, the name is empty and it status O\+P\+EN. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{links_8c_ad2a9e52ea7c506558a33bb6848bacc4b}{link\+\_\+destroy}} (\mbox{\hyperlink{struct__Link}{Link}} $\ast$l)
+\begin{DoxyCompactList}\small\item\em Destroys the link given. \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \mbox{\hyperlink{links_8c_a5c7cbab32fbf5ab20fd041dea9875f39}{link\+\_\+set\+Id}} (\mbox{\hyperlink{struct__Link}{Link}} $\ast$l, Id id)
+\begin{DoxyCompactList}\small\item\em Sets the Id of the link given. \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \mbox{\hyperlink{links_8c_aa37e68576d9e970c1a33748e059be314}{link\+\_\+set\+Name}} (\mbox{\hyperlink{struct__Link}{Link}} $\ast$l, const char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Changes name of the link given. \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \mbox{\hyperlink{links_8c_a2e29bcb001b0f996fe573a8017afed74}{link\+\_\+set\+Connections}} (\mbox{\hyperlink{struct__Link}{Link}} $\ast$l, Id id1, Id id2)
+\begin{DoxyCompactList}\small\item\em Sets the ids connected by the link given. \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \mbox{\hyperlink{links_8c_a593be099df78a2a1cffd48759388b38f}{link\+\_\+set\+Status}} (\mbox{\hyperlink{struct__Link}{Link}} $\ast$l, L\+I\+N\+K\+\_\+\+ST st)
+\begin{DoxyCompactList}\small\item\em Sets the status of the link given to O\+P\+EN or C\+L\+O\+S\+ED. \end{DoxyCompactList}\item 
+Id \mbox{\hyperlink{links_8c_a53c1abc5b1036293b2f083a43fa5f9a6}{link\+\_\+get\+Id}} (\mbox{\hyperlink{struct__Link}{Link}} $\ast$l)
+\begin{DoxyCompactList}\small\item\em Gets the Id of the link given. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{links_8c_ab3d06c76a6ea65bed3170e42cdd0d828}{link\+\_\+get\+Name}} (\mbox{\hyperlink{struct__Link}{Link}} $\ast$l)
+\begin{DoxyCompactList}\small\item\em Gets the name of the link given. \end{DoxyCompactList}\item 
+Id \mbox{\hyperlink{links_8c_a3e04759a2f985bd3e30b254041378fe5}{link\+\_\+get\+Connection1}} (\mbox{\hyperlink{struct__Link}{Link}} $\ast$l)
+\begin{DoxyCompactList}\small\item\em Gets the id connected by the link given of the space 2. \end{DoxyCompactList}\item 
+Id \mbox{\hyperlink{links_8c_a2eb48dcc6c62ee731d0f9b9d876d3e98}{link\+\_\+get\+Connection2}} (\mbox{\hyperlink{struct__Link}{Link}} $\ast$l)
+\begin{DoxyCompactList}\small\item\em Gets the id connected by the link given of the space 2. \end{DoxyCompactList}\item 
+L\+I\+N\+K\+\_\+\+ST \mbox{\hyperlink{links_8c_a7c8b44afb68bf50410ac691f7bb9ae36}{link\+\_\+get\+Status}} (\mbox{\hyperlink{struct__Link}{Link}} $\ast$l)
+\begin{DoxyCompactList}\small\item\em Gets the status of the link given, O\+P\+EN or C\+L\+O\+S\+ED. \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \mbox{\hyperlink{links_8c_af985f3682bfb49e75c4b779a5fd70eb2}{link\+\_\+print}} (\mbox{\hyperlink{struct__Link}{Link}} $\ast$l)
+\begin{DoxyCompactList}\small\item\em Prints the link for debugging porpuses. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+It implements the links module. 
+
+\begin{DoxyAuthor}{Author}
+Enrique Ortega Yegros 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+13-\/04-\/2021 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{links_8c_aaf21d03943afcbed370ca720f972482c}\label{links_8c_aaf21d03943afcbed370ca720f972482c}} 
+\index{links.c@{links.c}!link\_create@{link\_create}}
+\index{link\_create@{link\_create}!links.c@{links.c}}
+\doxysubsubsection{\texorpdfstring{link\_create()}{link\_create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct__Link}{Link}}$\ast$ link\+\_\+create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates a link and returns a pointer to the link. It sets the link Id to -\/1, the spaces links are set to 0, the name is empty and it status O\+P\+EN. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the link created 
+\end{DoxyReturn}
+\mbox{\Hypertarget{links_8c_ad2a9e52ea7c506558a33bb6848bacc4b}\label{links_8c_ad2a9e52ea7c506558a33bb6848bacc4b}} 
+\index{links.c@{links.c}!link\_destroy@{link\_destroy}}
+\index{link\_destroy@{link\_destroy}!links.c@{links.c}}
+\doxysubsubsection{\texorpdfstring{link\_destroy()}{link\_destroy()}}
+{\footnotesize\ttfamily void link\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Link}{Link}} $\ast$}]{l }\end{DoxyParamCaption})}
+
+
+
+Destroys the link given. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & pointer to the link to be destroyed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{links_8c_a3e04759a2f985bd3e30b254041378fe5}\label{links_8c_a3e04759a2f985bd3e30b254041378fe5}} 
+\index{links.c@{links.c}!link\_getConnection1@{link\_getConnection1}}
+\index{link\_getConnection1@{link\_getConnection1}!links.c@{links.c}}
+\doxysubsubsection{\texorpdfstring{link\_getConnection1()}{link\_getConnection1()}}
+{\footnotesize\ttfamily Id link\+\_\+get\+Connection1 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Link}{Link}} $\ast$}]{l }\end{DoxyParamCaption})}
+
+
+
+Gets the id connected by the link given of the space 2. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & pointer to the link which Spaces Ids will be returned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Id of the space 2 or -\/1 is there was any error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{links_8c_a2eb48dcc6c62ee731d0f9b9d876d3e98}\label{links_8c_a2eb48dcc6c62ee731d0f9b9d876d3e98}} 
+\index{links.c@{links.c}!link\_getConnection2@{link\_getConnection2}}
+\index{link\_getConnection2@{link\_getConnection2}!links.c@{links.c}}
+\doxysubsubsection{\texorpdfstring{link\_getConnection2()}{link\_getConnection2()}}
+{\footnotesize\ttfamily Id link\+\_\+get\+Connection2 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Link}{Link}} $\ast$}]{l }\end{DoxyParamCaption})}
+
+
+
+Gets the id connected by the link given of the space 2. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & pointer to the link which Spaces Ids will be returned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Id of the space 1 or -\/1 is there was any error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{links_8c_a53c1abc5b1036293b2f083a43fa5f9a6}\label{links_8c_a53c1abc5b1036293b2f083a43fa5f9a6}} 
+\index{links.c@{links.c}!link\_getId@{link\_getId}}
+\index{link\_getId@{link\_getId}!links.c@{links.c}}
+\doxysubsubsection{\texorpdfstring{link\_getId()}{link\_getId()}}
+{\footnotesize\ttfamily Id link\+\_\+get\+Id (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Link}{Link}} $\ast$}]{l }\end{DoxyParamCaption})}
+
+
+
+Gets the Id of the link given. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & pointer to the link which Id will be returned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Id of the given Link or -\/1 id there was any error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{links_8c_ab3d06c76a6ea65bed3170e42cdd0d828}\label{links_8c_ab3d06c76a6ea65bed3170e42cdd0d828}} 
+\index{links.c@{links.c}!link\_getName@{link\_getName}}
+\index{link\_getName@{link\_getName}!links.c@{links.c}}
+\doxysubsubsection{\texorpdfstring{link\_getName()}{link\_getName()}}
+{\footnotesize\ttfamily char$\ast$ link\+\_\+get\+Name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Link}{Link}} $\ast$}]{l }\end{DoxyParamCaption})}
+
+
+
+Gets the name of the link given. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & pointer to the link which name will be returned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A string copy with the name of the link or N\+U\+LL if there was any error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{links_8c_a7c8b44afb68bf50410ac691f7bb9ae36}\label{links_8c_a7c8b44afb68bf50410ac691f7bb9ae36}} 
+\index{links.c@{links.c}!link\_getStatus@{link\_getStatus}}
+\index{link\_getStatus@{link\_getStatus}!links.c@{links.c}}
+\doxysubsubsection{\texorpdfstring{link\_getStatus()}{link\_getStatus()}}
+{\footnotesize\ttfamily L\+I\+N\+K\+\_\+\+ST link\+\_\+get\+Status (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Link}{Link}} $\ast$}]{l }\end{DoxyParamCaption})}
+
+
+
+Gets the status of the link given, O\+P\+EN or C\+L\+O\+S\+ED. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & pointer to the link which status will be returned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+O\+P\+EN if the link is open, C\+L\+O\+S\+ED if the link is closed or -\/1 if there was any error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{links_8c_af985f3682bfb49e75c4b779a5fd70eb2}\label{links_8c_af985f3682bfb49e75c4b779a5fd70eb2}} 
+\index{links.c@{links.c}!link\_print@{link\_print}}
+\index{link\_print@{link\_print}!links.c@{links.c}}
+\doxysubsubsection{\texorpdfstring{link\_print()}{link\_print()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US link\+\_\+print (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Link}{Link}} $\ast$}]{l }\end{DoxyParamCaption})}
+
+
+
+Prints the link for debugging porpuses. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & pointer to the link that will be printed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if it works correctly, E\+R\+R\+OR in any other case 
+\end{DoxyReturn}
+\mbox{\Hypertarget{links_8c_a2e29bcb001b0f996fe573a8017afed74}\label{links_8c_a2e29bcb001b0f996fe573a8017afed74}} 
+\index{links.c@{links.c}!link\_setConnections@{link\_setConnections}}
+\index{link\_setConnections@{link\_setConnections}!links.c@{links.c}}
+\doxysubsubsection{\texorpdfstring{link\_setConnections()}{link\_setConnections()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US link\+\_\+set\+Connections (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Link}{Link}} $\ast$}]{l,  }\item[{Id}]{id1,  }\item[{Id}]{id2 }\end{DoxyParamCaption})}
+
+
+
+Sets the ids connected by the link given. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & pointer to the link to be connected \\
+\hline
+{\em id1} & Id of the space that will be connected \\
+\hline
+{\em id2} & Id of the space that will be connected \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if it works correctly, E\+R\+R\+OR in any other case 
+\end{DoxyReturn}
+\mbox{\Hypertarget{links_8c_a5c7cbab32fbf5ab20fd041dea9875f39}\label{links_8c_a5c7cbab32fbf5ab20fd041dea9875f39}} 
+\index{links.c@{links.c}!link\_setId@{link\_setId}}
+\index{link\_setId@{link\_setId}!links.c@{links.c}}
+\doxysubsubsection{\texorpdfstring{link\_setId()}{link\_setId()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US link\+\_\+set\+Id (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Link}{Link}} $\ast$}]{l,  }\item[{Id}]{id }\end{DoxyParamCaption})}
+
+
+
+Sets the Id of the link given. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & pointer to the link which Id will be changed \\
+\hline
+{\em id} & new id of the link \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if it works correctly, E\+R\+R\+OR in any other case 
+\end{DoxyReturn}
+\mbox{\Hypertarget{links_8c_aa37e68576d9e970c1a33748e059be314}\label{links_8c_aa37e68576d9e970c1a33748e059be314}} 
+\index{links.c@{links.c}!link\_setName@{link\_setName}}
+\index{link\_setName@{link\_setName}!links.c@{links.c}}
+\doxysubsubsection{\texorpdfstring{link\_setName()}{link\_setName()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US link\+\_\+set\+Name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Link}{Link}} $\ast$}]{l,  }\item[{const char $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+Changes name of the link given. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & pointer to the link which name will be changed \\
+\hline
+{\em name} & new name of the link \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if it works correctly, E\+R\+R\+OR in any other case 
+\end{DoxyReturn}
+\mbox{\Hypertarget{links_8c_a593be099df78a2a1cffd48759388b38f}\label{links_8c_a593be099df78a2a1cffd48759388b38f}} 
+\index{links.c@{links.c}!link\_setStatus@{link\_setStatus}}
+\index{link\_setStatus@{link\_setStatus}!links.c@{links.c}}
+\doxysubsubsection{\texorpdfstring{link\_setStatus()}{link\_setStatus()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US link\+\_\+set\+Status (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Link}{Link}} $\ast$}]{l,  }\item[{L\+I\+N\+K\+\_\+\+ST}]{st }\end{DoxyParamCaption})}
+
+
+
+Sets the status of the link given to O\+P\+EN or C\+L\+O\+S\+ED. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & pointer to the link which status will be changed \\
+\hline
+{\em st} & new status of the link (O\+P\+EN or C\+L\+O\+S\+ED) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK if it works correctly, E\+R\+R\+OR in any other case 
+\end{DoxyReturn}

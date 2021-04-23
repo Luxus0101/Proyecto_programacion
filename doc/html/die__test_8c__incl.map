@@ -1,0 +1,8 @@
+<map id="src/die_test.c" name="src/die_test.c">
+<area shape="rect" id="node1" title="File to test the functionality of Die module." alt="" coords="170,5,278,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,80,72,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="97,80,167,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="192,80,256,107"/>
+<area shape="rect" id="node5" href="$die_8h.html" title="Header for module Die. Provides functionality to implement dies." alt="" coords="281,80,335,107"/>
+<area shape="rect" id="node6" href="$types_8h.html" title="It defines common types." alt="" coords="305,155,375,181"/>
+</map>

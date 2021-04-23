@@ -1,0 +1,280 @@
+\hypertarget{die_8c}{}\doxysection{src/die.c File Reference}
+\label{die_8c}\index{src/die.c@{src/die.c}}
+
+
+Code for Die module.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}die.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}types.\+h\char`\"{}}\newline
+Include dependency graph for die.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{die_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct__Die}{\+\_\+\+Die}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct__Die}{Die}} $\ast$ \mbox{\hyperlink{die_8c_a413bced882cd5cadbb1d8feaf367ed3f}{die\+\_\+create}} (Id id)
+\begin{DoxyCompactList}\small\item\em Creates a die. \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \mbox{\hyperlink{die_8c_a2115999335e58f733d846be485cfb783}{die\+\_\+destroy}} (\mbox{\hyperlink{struct__Die}{Die}} $\ast$die)
+\begin{DoxyCompactList}\small\item\em Destroys the given die and deallocates memory. \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \mbox{\hyperlink{die_8c_afafc56aafeb40dbf889c421cace3d919}{die\+\_\+roll}} (\mbox{\hyperlink{struct__Die}{Die}} $\ast$die)
+\begin{DoxyCompactList}\small\item\em Assigns a new value to die-\/$>$last\+\_\+state. \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \mbox{\hyperlink{die_8c_a4ba0de5e507530e14302ac5096d7df56}{die\+\_\+print}} (F\+I\+LE $\ast$f, \mbox{\hyperlink{struct__Die}{Die}} $\ast$die)
+\begin{DoxyCompactList}\small\item\em Prints the attributes of the given die. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{die_8c_af1278ed628a7a1e1fc12f5ae100668a0}{die\+\_\+get\+\_\+min}} (\mbox{\hyperlink{struct__Die}{Die}} $\ast$die)
+\begin{DoxyCompactList}\small\item\em Returns the given die\textquotesingle{}s minimal value. \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \mbox{\hyperlink{die_8c_a273be67054d0c60bf1f8f0c6728e7787}{die\+\_\+set\+\_\+min}} (\mbox{\hyperlink{struct__Die}{Die}} $\ast$die, int min)
+\begin{DoxyCompactList}\small\item\em Assigns a new value to the given die\textquotesingle{}s minimal value. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{die_8c_a97b4e55526df6d01bd9e1d8353914f0a}{die\+\_\+get\+\_\+max}} (\mbox{\hyperlink{struct__Die}{Die}} $\ast$die)
+\begin{DoxyCompactList}\small\item\em Returns the given die\textquotesingle{}s maximum value. \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \mbox{\hyperlink{die_8c_af48f54599573ed41cd63f182fb4c27bc}{die\+\_\+set\+\_\+max}} (\mbox{\hyperlink{struct__Die}{Die}} $\ast$die, int max)
+\begin{DoxyCompactList}\small\item\em Assigns a new value to the given die\textquotesingle{}s maximum value. \end{DoxyCompactList}\item 
+Id \mbox{\hyperlink{die_8c_a57c9a2627bb3a1ca04fe55d72bd6a5ea}{die\+\_\+get\+\_\+id}} (\mbox{\hyperlink{struct__Die}{Die}} $\ast$die)
+\begin{DoxyCompactList}\small\item\em Returns the given die\textquotesingle{}s id. \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \mbox{\hyperlink{die_8c_a9062d99f612a9779903e9856c96db9d4}{die\+\_\+set\+\_\+id}} (\mbox{\hyperlink{struct__Die}{Die}} $\ast$die, Id id)
+\begin{DoxyCompactList}\small\item\em Assigns a new value to the given die\textquotesingle{}s id. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{die_8c_a6081820178176c1382224b216e3bdd87}{die\+\_\+last\+\_\+roll}} (\mbox{\hyperlink{struct__Die}{Die}} $\ast$die)
+\begin{DoxyCompactList}\small\item\em Returns the given die\textquotesingle{}s last state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Code for Die module. 
+
+\begin{DoxyAuthor}{Author}
+Lucas Piorno Palomo 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+25-\/02-\/2021 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+G\+NU Public License 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{die_8c_a413bced882cd5cadbb1d8feaf367ed3f}\label{die_8c_a413bced882cd5cadbb1d8feaf367ed3f}} 
+\index{die.c@{die.c}!die\_create@{die\_create}}
+\index{die\_create@{die\_create}!die.c@{die.c}}
+\doxysubsubsection{\texorpdfstring{die\_create()}{die\_create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct__Die}{Die}}$\ast$ die\+\_\+create (\begin{DoxyParamCaption}\item[{Id}]{id }\end{DoxyParamCaption})}
+
+
+
+Creates a die. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the new die. \\
+\hline
+{\em min} & Minimal value of the new die. \\
+\hline
+{\em max} & Maximum value of the new die.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a pointer to a die if it could be created, N\+U\+LL otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{die_8c_a2115999335e58f733d846be485cfb783}\label{die_8c_a2115999335e58f733d846be485cfb783}} 
+\index{die.c@{die.c}!die\_destroy@{die\_destroy}}
+\index{die\_destroy@{die\_destroy}!die.c@{die.c}}
+\doxysubsubsection{\texorpdfstring{die\_destroy()}{die\_destroy()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US die\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Die}{Die}} $\ast$}]{die }\end{DoxyParamCaption})}
+
+
+
+Destroys the given die and deallocates memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set} & Pointer to the die to be deallocated.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns OK if the die could be destroyed, E\+R\+R\+OR otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{die_8c_a57c9a2627bb3a1ca04fe55d72bd6a5ea}\label{die_8c_a57c9a2627bb3a1ca04fe55d72bd6a5ea}} 
+\index{die.c@{die.c}!die\_get\_id@{die\_get\_id}}
+\index{die\_get\_id@{die\_get\_id}!die.c@{die.c}}
+\doxysubsubsection{\texorpdfstring{die\_get\_id()}{die\_get\_id()}}
+{\footnotesize\ttfamily Id die\+\_\+get\+\_\+id (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Die}{Die}} $\ast$}]{die }\end{DoxyParamCaption})}
+
+
+
+Returns the given die\textquotesingle{}s id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em die} & Pointer to the die.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns die-\/$>$id, E\+R\+R\+OR if die doesnt exists. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{die_8c_a97b4e55526df6d01bd9e1d8353914f0a}\label{die_8c_a97b4e55526df6d01bd9e1d8353914f0a}} 
+\index{die.c@{die.c}!die\_get\_max@{die\_get\_max}}
+\index{die\_get\_max@{die\_get\_max}!die.c@{die.c}}
+\doxysubsubsection{\texorpdfstring{die\_get\_max()}{die\_get\_max()}}
+{\footnotesize\ttfamily int die\+\_\+get\+\_\+max (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Die}{Die}} $\ast$}]{die }\end{DoxyParamCaption})}
+
+
+
+Returns the given die\textquotesingle{}s maximum value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em die} & Pointer to the die.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns die-\/$>$max\+\_\+val, E\+R\+R\+OR if die doesnt exists. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{die_8c_af1278ed628a7a1e1fc12f5ae100668a0}\label{die_8c_af1278ed628a7a1e1fc12f5ae100668a0}} 
+\index{die.c@{die.c}!die\_get\_min@{die\_get\_min}}
+\index{die\_get\_min@{die\_get\_min}!die.c@{die.c}}
+\doxysubsubsection{\texorpdfstring{die\_get\_min()}{die\_get\_min()}}
+{\footnotesize\ttfamily int die\+\_\+get\+\_\+min (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Die}{Die}} $\ast$}]{die }\end{DoxyParamCaption})}
+
+
+
+Returns the given die\textquotesingle{}s minimal value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em die} & Pointer to the die.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns die-\/$>$min\+\_\+val, E\+R\+R\+OR if die doesnt exists. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{die_8c_a6081820178176c1382224b216e3bdd87}\label{die_8c_a6081820178176c1382224b216e3bdd87}} 
+\index{die.c@{die.c}!die\_last\_roll@{die\_last\_roll}}
+\index{die\_last\_roll@{die\_last\_roll}!die.c@{die.c}}
+\doxysubsubsection{\texorpdfstring{die\_last\_roll()}{die\_last\_roll()}}
+{\footnotesize\ttfamily int die\+\_\+last\+\_\+roll (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Die}{Die}} $\ast$}]{die }\end{DoxyParamCaption})}
+
+
+
+Returns the given die\textquotesingle{}s last state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em die} & Pointer to the die.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns die-\/$>$last\+\_\+state, E\+R\+R\+OR if die doesnt exists. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{die_8c_a4ba0de5e507530e14302ac5096d7df56}\label{die_8c_a4ba0de5e507530e14302ac5096d7df56}} 
+\index{die.c@{die.c}!die\_print@{die\_print}}
+\index{die\_print@{die\_print}!die.c@{die.c}}
+\doxysubsubsection{\texorpdfstring{die\_print()}{die\_print()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US die\+\_\+print (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{f,  }\item[{\mbox{\hyperlink{struct__Die}{Die}} $\ast$}]{die }\end{DoxyParamCaption})}
+
+
+
+Prints the attributes of the given die. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Pointer to the file inside which the contents must be printed. \\
+\hline
+{\em die} & Pointer to the die to be printed.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns OK if the die\textquotesingle{}s contents could be printed, E\+R\+R\+OR otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{die_8c_afafc56aafeb40dbf889c421cace3d919}\label{die_8c_afafc56aafeb40dbf889c421cace3d919}} 
+\index{die.c@{die.c}!die\_roll@{die\_roll}}
+\index{die\_roll@{die\_roll}!die.c@{die.c}}
+\doxysubsubsection{\texorpdfstring{die\_roll()}{die\_roll()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US die\+\_\+roll (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Die}{Die}} $\ast$}]{die }\end{DoxyParamCaption})}
+
+
+
+Assigns a new value to die-\/$>$last\+\_\+state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em die} & Pointer to the die to be rolled.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns OK if the die could be rolled, E\+R\+R\+OR otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{die_8c_a9062d99f612a9779903e9856c96db9d4}\label{die_8c_a9062d99f612a9779903e9856c96db9d4}} 
+\index{die.c@{die.c}!die\_set\_id@{die\_set\_id}}
+\index{die\_set\_id@{die\_set\_id}!die.c@{die.c}}
+\doxysubsubsection{\texorpdfstring{die\_set\_id()}{die\_set\_id()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US die\+\_\+set\+\_\+id (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Die}{Die}} $\ast$}]{die,  }\item[{Id}]{id }\end{DoxyParamCaption})}
+
+
+
+Assigns a new value to the given die\textquotesingle{}s id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em die} & Pointer to the die. \\
+\hline
+{\em id} & New id.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns OK if the value could be changed, E\+R\+R\+OR if die doesnt exists or id isn\textquotesingle{}t a valid value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{die_8c_af48f54599573ed41cd63f182fb4c27bc}\label{die_8c_af48f54599573ed41cd63f182fb4c27bc}} 
+\index{die.c@{die.c}!die\_set\_max@{die\_set\_max}}
+\index{die\_set\_max@{die\_set\_max}!die.c@{die.c}}
+\doxysubsubsection{\texorpdfstring{die\_set\_max()}{die\_set\_max()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US die\+\_\+set\+\_\+max (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Die}{Die}} $\ast$}]{die,  }\item[{int}]{max }\end{DoxyParamCaption})}
+
+
+
+Assigns a new value to the given die\textquotesingle{}s maximum value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em die} & Pointer to the die. \\
+\hline
+{\em max} & New value to be assigned to die-\/$>$max\+\_\+val.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns OK if the value could be changed, E\+R\+R\+OR if die doesnt exists or max isn\textquotesingle{}t a valid number. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{die_8c_a273be67054d0c60bf1f8f0c6728e7787}\label{die_8c_a273be67054d0c60bf1f8f0c6728e7787}} 
+\index{die.c@{die.c}!die\_set\_min@{die\_set\_min}}
+\index{die\_set\_min@{die\_set\_min}!die.c@{die.c}}
+\doxysubsubsection{\texorpdfstring{die\_set\_min()}{die\_set\_min()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US die\+\_\+set\+\_\+min (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Die}{Die}} $\ast$}]{die,  }\item[{int}]{min }\end{DoxyParamCaption})}
+
+
+
+Assigns a new value to the given die\textquotesingle{}s minimal value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em die} & Pointer to the die. \\
+\hline
+{\em min} & New value to be assigned to die-\/$>$min\+\_\+val.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns OK if the value could be changed, E\+R\+R\+OR if die doesnt exists or min isn\textquotesingle{}t a valid number. 
+\end{DoxyReturn}
