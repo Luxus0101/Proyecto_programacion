@@ -12,7 +12,7 @@
 #define COMMAND_H
 
 #define N_CMDT 2
-#define N_CMD 12
+#define N_CMD 8
 
 typedef enum enum_CmdType
 {
@@ -25,13 +25,9 @@ typedef enum enum_Command
   NO_CMD = -1,
   UNKNOWN,
   EXIT,
-  NEXT,
-  BACK,
   TAKE,
   DROP,
   ROLL,
-  LEFT,
-  RIGHT,
   MOVE,
   INSPECT
 } T_Command;

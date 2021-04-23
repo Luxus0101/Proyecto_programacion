@@ -17,7 +17,7 @@
 #include "set.h"
 #include "die.h"
 #include "inventory.h"
-#define N_CALLBACK 11
+#define N_CALLBACK 7
 struct _Game
 {
   Player *player;
@@ -40,26 +40,18 @@ typedef void (*callback_fn)(Game *game);
 */
 void game_callback_unknown(Game *game);
 void game_callback_exit(Game *game);
-void game_callback_next(Game *game);
-void game_callback_back(Game *game);
 void game_callback_take(Game *game);
 void game_callback_drop(Game *game);
 void game_callback_roll(Game *game);
-void game_callback_right(Game *game);
-void game_callback_left(Game *game);
 void game_callback_move(Game *game);
 void game_callback_inspect(Game *game);
 
 static callback_fn game_callback_fn_list[N_CALLBACK] = {
     game_callback_unknown,
     game_callback_exit,
-    game_callback_next,
-    game_callback_back,
     game_callback_take,
     game_callback_drop,
     game_callback_roll,
-    game_callback_right,
-    game_callback_left,
     game_callback_move,
     game_callback_inspect};
 
@@ -271,338 +263,6 @@ BOOL game_is_over(Game *game)
   return FALSE;
 }
 
-/**
-   Callbacks implementation for each action
-*/
-
-void game_callback_unknown(Game *game)
-{
-  game->stat_last_cmd = ERROR;
-}
-
-void game_callback_exit(Game *game)
-{
-  game->stat_last_cmd = OK;
-}
-
-void game_callback_next(Game *game)
-{
-  int i = 0;
-  Id current_id = NO_ID;
-  Id space_id = NO_ID;
-
-  space_id = game_get_player_location(game);
-  if (space_id == NO_ID)
-  {
-    game->stat_last_cmd = ERROR;
-    return;
-  }
-
-  for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++)
-  {
-    current_id = space_get_id(game->spaces[i]);
-    if (current_id == space_id)
-    {
-      current_id = link_getConnection2(game_get_link(game, space_get_south(game->spaces[i])));
-      if (current_id != NO_ID)
-      {
-        game_set_player_location(game, current_id);
-        game->stat_last_cmd = OK;
-      }
-      else
-      {
-        game->stat_last_cmd = ERROR;
-      }
-      return;
-    }
-  }
-  game->stat_last_cmd = ERROR;
-}
-
-void game_callback_back(Game *game)
-{
-  int i = 0;
-  Id current_id = NO_ID;
-  Id space_id = NO_ID;
-
-  space_id = game_get_player_location(game);
-
-  if (NO_ID == space_id)
-  {
-    game->stat_last_cmd = ERROR;
-    return;
-  }
-
-  for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++)
-  {
-    current_id = space_get_id(game->spaces[i]);
-    if (current_id == space_id)
-    {
-      current_id = link_getConnection1(game_get_link(game, space_get_north(game->spaces[i])));
-      if (current_id != NO_ID)
-      {
-        game_set_player_location(game, current_id);
-        game->stat_last_cmd = OK;
-      }
-      else
-      {
-        game->stat_last_cmd = ERROR;
-      }
-      return;
-    }
-  }
-  game->stat_last_cmd = ERROR;
-}
-
-void game_callback_move(Game *game)
-{
-  Id space_id = NO_ID;
-  char direction[100];
-
-  space_id = game_get_player_location(game);
-  if (space_id == NO_ID)
-  {
-    game->stat_last_cmd = ERROR;
-    return;
-  }
-  /*----------------------------*/
-  scanf("%s", direction);
-
-  if (strcmp("west", direction) == 0 || strcmp("w", direction) == 0)
-  {
-    game_callback_left(game);
-  }
-  else if (strcmp("south", direction) == 0 || strcmp("s", direction) == 0)
-  {
-    game_callback_next(game);
-  }
-  else if (strcmp("north", direction) == 0 || strcmp("n", direction) == 0)
-  {
-    game_callback_back(game);
-  }
-  else if (strcmp("east", direction) == 0 || strcmp("e", direction) == 0)
-  {
-    game_callback_right(game);
-  }
-  else
-  {
-    game->stat_last_cmd = ERROR;
-    return;
-  }
-}
-
-void game_callback_take(Game *game)
-{
-  int i = 0;
-  Id current_id = NO_ID;
-  Id object_id = NO_ID;
-  Id player_id = NO_ID;
-  Id object_loc_id = NO_ID;
-  char object_desc[100];
-  if (Inventory_get_set_num_ids(player_get_inv(game_get_player(game))) != inventory_num_obs(player_get_inv(game_get_player(game))))
-  {
-    scanf("%s", object_desc);
-
-    if ((object_id = strtol(object_desc, NULL, 10)) == 0)
-    {
-      for (int i = 0; i < MAX_OBJECTS; i++)
-      {
-        if (strcmp(object_get_name(game->object[i]), object_desc) == 0)
-        {
-          object_id = object_get_id(game->object[i]);
-          break;
-        }
-      }
-    }
-
-    player_id = game_get_player_location(game);
-    if (object_id == NO_ID)
-    {
-      game->stat_last_cmd = ERROR;
-      return;
-    }
-
-    object_loc_id = game_get_object_location(game, object_id);
-    for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++)
-    {
-      current_id = space_get_id(game->spaces[i]);
-
-      if (current_id == object_loc_id && player_id == current_id && player_object_exist(game->player, object_id) == FALSE)
-      {
-        player_set_object(game->player, object_id);
-        space_del_object(game->spaces[i], object_id);
-        game->stat_last_cmd = OK;
-
-        return;
-      }
-    }
-  }
-  game->stat_last_cmd = ERROR;
-  return;
-}
-void game_callback_drop(Game *game)
-{
-  int i = 0;
-  Id current_id = NO_ID;
-  Id player_id = NO_ID;
-  Id object_id = NO_ID;
-  char object_desc[100];
-  player_id = game_get_player_location(game);
-
-  if (NO_ID == player_id)
-  {
-    game->stat_last_cmd = ERROR;
-    return;
-  }
-  scanf("%s", object_desc);
-
-  if ((object_id = strtol(object_desc, NULL, 10)) == 0)
-  {
-    for (int i = 0; i < MAX_OBJECTS; i++)
-    {
-      if (strcmp(object_get_name(game->object[i]), object_desc) == 0)
-      {
-        object_id = object_get_id(game->object[i]);
-        break;
-      }
-    }
-  }
-  if (object_id == NO_ID)
-  {
-    game->stat_last_cmd = ERROR;
-    return;
-  }
-  for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++)
-  {
-    current_id = space_get_id(game->spaces[i]);
-    if (current_id == player_id)
-    {
-      space_add_object(game->spaces[i], object_id);
-      player_sub_object(game->player, object_id);
-      game->stat_last_cmd = OK;
-      return;
-    }
-  }
-  game->stat_last_cmd = ERROR;
-}
-void game_callback_roll(Game *game)
-{
-  if (die_roll(game->die) < 0)
-  {
-    game->stat_last_cmd = ERROR;
-    return;
-  }
-  game->stat_last_cmd = OK;
-  return;
-}
-void game_callback_left(Game *game)
-{
-  int i = 0;
-  Id current_id = NO_ID;
-  Id space_id = NO_ID;
-
-  space_id = game_get_player_location(game);
-  if (space_id == NO_ID)
-  {
-    game->stat_last_cmd = ERROR;
-    return;
-  }
-
-  for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++)
-  {
-    current_id = space_get_id(game->spaces[i]);
-    if (current_id == space_id)
-    {
-      current_id = link_getConnection2(game_get_link(game, space_get_west(game->spaces[i])));
-      if (current_id != NO_ID)
-      {
-        game_set_player_location(game, current_id);
-        game->stat_last_cmd = OK;
-      }
-      else
-      {
-        game->stat_last_cmd = ERROR;
-      }
-      return;
-    }
-  }
-  game->stat_last_cmd = ERROR;
-}
-void game_callback_right(Game *game)
-{
-
-  int i = 0;
-  Id current_id = NO_ID;
-  Id space_id = NO_ID;
-
-  space_id = game_get_player_location(game);
-  if (space_id == NO_ID)
-  {
-    game->stat_last_cmd = ERROR;
-    return;
-  }
-
-  for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++)
-  {
-    current_id = space_get_id(game->spaces[i]);
-    if (current_id == space_id)
-    {
-      current_id = link_getConnection2(game_get_link(game, space_get_east(game->spaces[i])));
-      if (current_id != NO_ID)
-      {
-        game_set_player_location(game, current_id);
-        game->stat_last_cmd = OK;
-      }
-      else
-      {
-        game->stat_last_cmd = ERROR;
-      }
-      return;
-    }
-  }
-  game->stat_last_cmd = ERROR;
-}
-
-void game_callback_inspect(Game *game)
-{
-  Id space_id = NO_ID;
-  char desc[WORD_SIZE];
-
-  scanf("%s", desc);
-
-  /*Return space description*/
-  if (strcmp("space", desc) == 0 || strcmp("s", desc) == 0)
-  {
-
-    space_id = game_get_player_location(game);
-    if (space_id == NO_ID)
-    {
-      game->stat_last_cmd = ERROR;
-      return;
-    }
-
-    strcpy(game->last_description, space_get_description(game_get_space(game, space_id)));
-    game->stat_last_cmd = OK;
-    return;
-  }
-
-  /*Return object description*/
-  else
-  {
-    for (int i = 0; game->object[i] != NULL; i++)
-    {
-      if (strcmp(object_get_name(game->object[i]), desc) == 0)
-      {
-        strcpy(game->last_description, object_get_description(game->object[i]));
-        game->stat_last_cmd = OK;
-        return;
-      }
-    }
-  }
-  game->stat_last_cmd = ERROR;
-  return;
-}
-
 STATUS game_get_command_status(Game *game)
 {
   if (game == NULL)
@@ -767,4 +427,322 @@ char *game_get_lastDescription(Game *game)
   }
 
   return game->last_description;
+}
+
+/**
+   Callbacks implementation for each action
+*/
+
+void game_callback_unknown(Game *game)
+{
+  game->stat_last_cmd = ERROR;
+}
+void game_callback_exit(Game *game)
+{
+  game->stat_last_cmd = OK;
+}
+void game_callback_move(Game *game)
+{
+  Id space_id = NO_ID;
+  int i = 0;
+  Id current_id;
+  char direction[100];
+
+  space_id = game_get_player_location(game);
+  if (space_id == NO_ID)
+  {
+    game->stat_last_cmd = ERROR;
+    return;
+  }
+  /*----------------------------*/
+  scanf("%s", direction);
+
+  if (strcmp("west", direction) == 0 || strcmp("w", direction) == 0)
+  {
+    space_id = game_get_player_location(game);
+    if (space_id == NO_ID)
+    {
+      game->stat_last_cmd = ERROR;
+      return;
+    }
+
+    for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++)
+    {
+      current_id = space_get_id(game->spaces[i]);
+      if (current_id == space_id)
+      {
+        current_id = link_getConnection2(game_get_link(game, space_get_west(game->spaces[i])));
+        if (current_id != NO_ID)
+        {
+          game_set_player_location(game, current_id);
+          game->stat_last_cmd = OK;
+        }
+        else
+        {
+          game->stat_last_cmd = ERROR;
+        }
+        return;
+      }
+    }
+    game->stat_last_cmd = ERROR;
+  }
+  else if (strcmp("south", direction) == 0 || strcmp("s", direction) == 0)
+  {
+    space_id = game_get_player_location(game);
+    if (space_id == NO_ID)
+    {
+      game->stat_last_cmd = ERROR;
+      return;
+    }
+
+    for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++)
+    {
+      current_id = space_get_id(game->spaces[i]);
+      if (current_id == space_id)
+      {
+        current_id = link_getConnection2(game_get_link(game, space_get_south(game->spaces[i])));
+        if (current_id != NO_ID)
+        {
+          game_set_player_location(game, current_id);
+          game->stat_last_cmd = OK;
+        }
+        else
+        {
+          game->stat_last_cmd = ERROR;
+        }
+        return;
+      }
+    }
+    game->stat_last_cmd = ERROR;
+  }
+  else if (strcmp("north", direction) == 0 || strcmp("n", direction) == 0)
+  {
+    space_id = game_get_player_location(game);
+
+    if (NO_ID == space_id)
+    {
+      game->stat_last_cmd = ERROR;
+      return;
+    }
+
+    for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++)
+    {
+      current_id = space_get_id(game->spaces[i]);
+      if (current_id == space_id)
+      {
+        current_id = link_getConnection1(game_get_link(game, space_get_north(game->spaces[i])));
+        if (current_id != NO_ID)
+        {
+          game_set_player_location(game, current_id);
+          game->stat_last_cmd = OK;
+        }
+        else
+        {
+          game->stat_last_cmd = ERROR;
+        }
+        return;
+      }
+    }
+    game->stat_last_cmd = ERROR;
+  }
+  else if (strcmp("east", direction) == 0 || strcmp("e", direction) == 0)
+  {
+    space_id = game_get_player_location(game);
+    if (space_id == NO_ID)
+    {
+      game->stat_last_cmd = ERROR;
+      return;
+    }
+
+    for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++)
+    {
+      current_id = space_get_id(game->spaces[i]);
+      if (current_id == space_id)
+      {
+        current_id = link_getConnection2(game_get_link(game, space_get_east(game->spaces[i])));
+        if (current_id != NO_ID)
+        {
+          game_set_player_location(game, current_id);
+          game->stat_last_cmd = OK;
+        }
+        else
+        {
+          game->stat_last_cmd = ERROR;
+        }
+        return;
+      }
+    }
+    game->stat_last_cmd = ERROR;
+  }
+  else
+  {
+    game->stat_last_cmd = ERROR;
+    return;
+  }
+}
+void game_callback_take(Game *game)
+{
+  int i = 0;
+  Id current_id = NO_ID;
+  Id object_id = NO_ID;
+  Id player_id = NO_ID;
+  Id object_loc_id = NO_ID;
+  char object_desc[100];
+  if (Inventory_get_set_num_ids(player_get_inv(game_get_player(game))) != inventory_num_obs(player_get_inv(game_get_player(game))))
+  {
+    scanf("%s", object_desc);
+
+    if ((object_id = strtol(object_desc, NULL, 10)) == 0)
+    {
+      for (int i = 0; i < MAX_OBJECTS; i++)
+      {
+        if (strcmp(object_get_name(game->object[i]), object_desc) == 0)
+        {
+          object_id = object_get_id(game->object[i]);
+          break;
+        }
+      }
+    }
+
+    player_id = game_get_player_location(game);
+    if (object_id == NO_ID)
+    {
+      game->stat_last_cmd = ERROR;
+      return;
+    }
+
+    object_loc_id = game_get_object_location(game, object_id);
+    for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++)
+    {
+      current_id = space_get_id(game->spaces[i]);
+
+      if (current_id == object_loc_id && player_id == current_id && player_object_exist(game->player, object_id) == FALSE)
+      {
+        player_set_object(game->player, object_id);
+        space_del_object(game->spaces[i], object_id);
+        game->stat_last_cmd = OK;
+
+        return;
+      }
+    }
+  }
+  game->stat_last_cmd = ERROR;
+  return;
+}
+void game_callback_drop(Game *game)
+{
+  int i = 0;
+  Id current_id = NO_ID;
+  Id player_id = NO_ID;
+  Id object_id = NO_ID;
+  char object_desc[100];
+  player_id = game_get_player_location(game);
+
+  if (NO_ID == player_id)
+  {
+    game->stat_last_cmd = ERROR;
+    return;
+  }
+  scanf("%s", object_desc);
+
+  if ((object_id = strtol(object_desc, NULL, 10)) == 0)
+  {
+    for (int i = 0; i < MAX_OBJECTS; i++)
+    {
+      if (strcmp(object_get_name(game->object[i]), object_desc) == 0)
+      {
+        object_id = object_get_id(game->object[i]);
+        break;
+      }
+    }
+  }
+  if (object_id == NO_ID)
+  {
+    game->stat_last_cmd = ERROR;
+    return;
+  }
+  for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++)
+  {
+    current_id = space_get_id(game->spaces[i]);
+    if (current_id == player_id)
+    {
+      space_add_object(game->spaces[i], object_id);
+      player_sub_object(game->player, object_id);
+      game->stat_last_cmd = OK;
+      return;
+    }
+  }
+  game->stat_last_cmd = ERROR;
+}
+void game_callback_roll(Game *game)
+{
+  if (die_roll(game->die) < 0)
+  {
+    game->stat_last_cmd = ERROR;
+    return;
+  }
+  game->stat_last_cmd = OK;
+  return;
+}
+void game_callback_inspect(Game *game)
+{
+  Id space_id = NO_ID;
+  int i;
+  BOOL object_found = FALSE;
+  char desc[WORD_SIZE];
+
+  scanf("%s", desc);
+
+  /*Return space description*/
+  if(space_get_illuminated(game_get_space(game, game_get_player_location(game)))){
+    if (strcmp("space", desc) == 0 || strcmp("s", desc) == 0)
+    {
+
+      space_id = game_get_player_location(game);
+      if (space_id == NO_ID)
+      {
+        game->stat_last_cmd = ERROR;
+        return;
+      }
+
+      strcpy(game->last_description, space_get_description(game_get_space(game, space_id)));
+      game->stat_last_cmd = OK;
+      return;
+    }
+
+    /*Return object description*/
+    else
+    {
+      for (i = 0; game->object[i] != NULL; i++)
+      {
+        if (strcmp(object_get_name(game->object[i]), desc) == 0)
+        {
+          object_found = TRUE;
+          break;
+        }
+      }
+      if(object_found && game_get_object_location(game, object_get_id(game->object[i])) == game_get_player_location(game)){
+        strcpy(game->last_description, object_get_description(game->object[i]));
+        game->stat_last_cmd = OK;
+        return;
+      }
+      else if(object_found){
+        strcpy(game->last_description, "The object isn't here");
+        game->stat_last_cmd = OK;
+        return;
+      }
+      else {
+        strcpy(game->last_description, "That object doesn't exist");
+        game->stat_last_cmd = OK;
+        return;
+      }
+    }
+  }
+  else{
+    strcpy(game->last_description, "Its so dark here");
+    game->stat_last_cmd = OK;
+    return;
+  }
+  game->stat_last_cmd = ERROR;
+  return;
 }

@@ -21,13 +21,9 @@ char *cmd_to_str[N_CMD][N_CMDT] =
 		{"", "No command"},
 		{"", "Unknown"},
 		{"e", "Exit"},
-		{"n", "Next"},
-		{"b", "Back"},
 		{"t", "Take"},
 		{"d", "Drop"},
 		{"rl", "Roll"},
-		{"r", "Right"},
-		{"l", "Left"},
 		{"m", "Move"},
 		{"i", "Inspect"}};
 

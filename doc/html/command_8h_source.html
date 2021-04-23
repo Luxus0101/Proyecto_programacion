@@ -74,7 +74,7 @@ $(function() {
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define COMMAND_H</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#define N_CMDT 2</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define N_CMD 12</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define N_CMD 8</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> enum_CmdType</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
@@ -87,20 +87,16 @@ $(function() {
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  NO_CMD = -1,</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  UNKNOWN,</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  EXIT,</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  NEXT,</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  BACK,</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  TAKE,</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  DROP,</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  ROLL,</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  LEFT,</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  RIGHT,</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  MOVE,</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  INSPECT</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;} T_Command;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">char</span> *change_command_to_string(T_Command cmd);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;T_Command get_user_input();</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  TAKE,</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  DROP,</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  ROLL,</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  MOVE,</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  INSPECT</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;} T_Command;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">char</span> *change_command_to_string(T_Command cmd);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;T_Command get_user_input();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

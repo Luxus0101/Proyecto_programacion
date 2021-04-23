@@ -1,9 +1,9 @@
-/** 
+/**
  * @brief It defines a space
- * 
+ *
  * @file space.h
  * @author Nicolas Pacini and Enrique Ortega
- * @version 3.0 
+ * @version 3.0
  * @date 14-04-2021
  * @copyright GNU Public License
  */
@@ -53,5 +53,10 @@ STATUS space_setDesc(Space *space, char *desc, int index);
 BOOL space_areConnected(Space *space1, Space *space2);
 char *space_get_description(Space *space);
 STATUS space_set_description(Space *space, char *desc);
+STATUS space_set_up(Space *space, Id up);
+STATUS space_set_down(Space *space, Id down);
+Id space_get_up(Space *space);
+Id space_get_down(Space *space);
+BOOL space_get_illuminated(Space *space);
 
 #endif

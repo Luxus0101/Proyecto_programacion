@@ -13,11 +13,9 @@ struct _Space
   char name[WORD_SIZE + 1];
   char *gdesc[NUM_SHAPES];
   char desc[WORD_SIZE + 1];
-  Id north;
-  Id south;
-  Id east;
-  Id west;
+  Id north, south, east, west, up, down;
   Set *objects;
+  BOOL illuminated;
 };
 
 Space *space_create(Id id)
@@ -52,6 +50,10 @@ Space *space_create(Id id)
   newSpace->south = NO_ID;
   newSpace->east = NO_ID;
   newSpace->west = NO_ID;
+  newSpace->up = NO_ID;
+  newSpace->down = NO_ID;
+
+  newSpace->illuminated = TRUE;
 
   newSpace->objects = set_create();
   if (newSpace->objects == NULL)
@@ -161,6 +163,28 @@ STATUS space_set_west(Space *space, Id west)
   return OK;
 }
 
+STATUS space_set_up(Space *space, Id up)
+{
+  if (!space || up == NO_ID)
+  {
+    return ERROR;
+  }
+
+  space->up = up;
+  return OK;
+}
+
+STATUS space_set_down(Space *space, Id down)
+{
+  if (!space || down == NO_ID)
+  {
+    return ERROR;
+  }
+
+  space->down = down;
+  return OK;
+}
+
 const char *space_get_name(Space *space)
 {
   if (!space)
@@ -248,6 +272,24 @@ Id space_get_west(Space *space)
   return space->west;
 }
 
+Id space_get_up(Space *space)
+{
+  if (!space)
+  {
+    return NO_ID;
+  }
+  return space->up;
+}
+
+Id space_get_down(Space *space)
+{
+  if (!space)
+  {
+    return NO_ID;
+  }
+  return space->down;
+}
+
 BOOL space_get_object(Space *space)
 {
   if (space == NULL)
@@ -261,6 +303,17 @@ BOOL space_get_object(Space *space)
   }
 
   return FALSE;
+}
+
+STATUS space_set_illuminated(Space *space, BOOL i){
+  if(!space) return ERROR;
+  space->illuminated = i;
+  return OK;
+}
+
+BOOL space_get_illuminated(Space *space){
+  if(!space) return FALSE;
+  return space->illuminated;
 }
 
 STATUS space_print(Space *space)
@@ -318,6 +371,26 @@ STATUS space_print(Space *space)
     fprintf(stdout, "---> No west link.\n");
   }
 
+  link_setId(laux, space_get_up(space));
+  if (NULL != laux)
+  {
+    link_print(laux);
+  }
+  else
+  {
+    fprintf(stdout, "---> No up link.\n");
+  }
+
+  link_setId(laux, space_get_down(space));
+  if (NULL != laux)
+  {
+    link_print(laux);
+  }
+  else
+  {
+    fprintf(stdout, "---> No down link.\n");
+  }
+
   if (space_get_object(space) == 1)
   {
 
@@ -327,6 +400,8 @@ STATUS space_print(Space *space)
   {
     fprintf(stdout, "---> No object in the space.\n");
   }
+
+  fprintf(stdout, "Illuminated? %hd\n", space->illuminated);
 
   return OK;
 }

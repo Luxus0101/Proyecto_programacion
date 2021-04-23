@@ -109,11 +109,16 @@ $(function() {
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;BOOL <a class="code" href="space_8h.html#af4c5432d339df0f5b40541a0ca1aaf53">space_areConnected</a>(<a class="code" href="struct__Space.html">Space</a> *space1, <a class="code" href="struct__Space.html">Space</a> *space2);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">char</span> *space_get_description(<a class="code" href="struct__Space.html">Space</a> *space);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;STATUS space_set_description(<a class="code" href="struct__Space.html">Space</a> *space, <span class="keywordtype">char</span> *desc);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;STATUS space_set_up(<a class="code" href="struct__Space.html">Space</a> *space, Id up);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;STATUS space_set_down(<a class="code" href="struct__Space.html">Space</a> *space, Id down);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;Id space_get_up(<a class="code" href="struct__Space.html">Space</a> *space);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;Id space_get_down(<a class="code" href="struct__Space.html">Space</a> *space);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;BOOL space_get_illuminated(<a class="code" href="struct__Space.html">Space</a> *space);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="atypes_8h_html"><div class="ttname"><a href="types_8h.html">types.h</a></div><div class="ttdoc">It defines common types.</div></div>
-<div class="ttc" id="aspace_8h_html_af4c5432d339df0f5b40541a0ca1aaf53"><div class="ttname"><a href="space_8h.html#af4c5432d339df0f5b40541a0ca1aaf53">space_areConnected</a></div><div class="ttdeci">BOOL space_areConnected(Space *space1, Space *space2)</div><div class="ttdoc">Checks if two spaces are connected by a link or nor.</div><div class="ttdef"><b>Definition:</b> space.c:374</div></div>
+<div class="ttc" id="aspace_8h_html_af4c5432d339df0f5b40541a0ca1aaf53"><div class="ttname"><a href="space_8h.html#af4c5432d339df0f5b40541a0ca1aaf53">space_areConnected</a></div><div class="ttdeci">BOOL space_areConnected(Space *space1, Space *space2)</div><div class="ttdoc">Checks if two spaces are connected by a link or nor.</div><div class="ttdef"><b>Definition:</b> space.c:449</div></div>
 <div class="ttc" id="astruct__Space_html"><div class="ttname"><a href="struct__Space.html">_Space</a></div><div class="ttdef"><b>Definition:</b> space.c:10</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
