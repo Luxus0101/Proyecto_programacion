@@ -2,7 +2,7 @@ DOCUMENTATION FILE
 ------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
 NAME: Lucas Piorno Palomo
-ASSIGMENTS: exercise 9, 10, 11
+ASSIGMENTS: exercise 9, 10, 11, 17
 --> Add and change the commands to implement all the new changes
 TIME: 4 hours and 30 mins aprox
 TERMS AND CONDITIONS OF DELIVERIES: 19th of April

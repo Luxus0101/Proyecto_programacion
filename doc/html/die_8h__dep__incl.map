@@ -1,0 +1,10 @@
+<map id="include/die.h" name="include/die.h">
+<area shape="rect" id="node1" title="Header for module Die. Provides functionality to implement dies." alt="" coords="507,5,613,32"/>
+<area shape="rect" id="node2" href="$game_8h.html" title="It defines the game interface for each command." alt="" coords="216,80,339,107"/>
+<area shape="rect" id="node4" href="$game_8c.html" title="It implements the game interface and all the associated callbacks for each command." alt="" coords="353,229,447,256"/>
+<area shape="rect" id="node7" href="$die_8c.html" title="Code for Die module." alt="" coords="561,80,637,107"/>
+<area shape="rect" id="node8" href="$die__test_8c.html" title="File to test the functionality of Die module." alt="" coords="661,80,769,107"/>
+<area shape="rect" id="node3" href="$game__reader_8h_source.html" title=" " alt="" coords="315,155,485,181"/>
+<area shape="rect" id="node5" href="$graphic__engine_8h.html" title="It defines a textual graphic engine." alt="" coords="5,155,189,181"/>
+<area shape="rect" id="node6" href="$game__loop_8c.html" title="It defines the game loop." alt="" coords="99,229,227,256"/>
+</map>

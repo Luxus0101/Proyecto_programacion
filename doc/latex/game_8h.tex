@@ -1,0 +1,451 @@
+\hypertarget{game_8h}{}\doxysection{include/game.h File Reference}
+\label{game_8h}\index{include/game.h@{include/game.h}}
+
+
+It defines the game interface for each command.  
+
+
+{\ttfamily \#include \char`\"{}command.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}space.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}player.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}object.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}die.\+h\char`\"{}}\newline
+Include dependency graph for game.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}\label{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}} 
+typedef struct \mbox{\hyperlink{struct__Game}{\+\_\+\+Game}} {\bfseries Game}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct__Game}{Game}} $\ast$ \mbox{\hyperlink{game_8h_a1cdbe3f06b9bf49eb5e334a22ad3b2b9}{game\+\_\+create}} ()
+\begin{DoxyCompactList}\small\item\em creates a game like structure \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \mbox{\hyperlink{game_8h_afc77f90739be0fd45b7f5616e543bfae}{game\+\_\+create\+\_\+from\+\_\+file}} (\mbox{\hyperlink{struct__Game}{Game}} $\ast$game, char $\ast$filename)
+\begin{DoxyCompactList}\small\item\em creates a game from a read file \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \mbox{\hyperlink{game_8h_a005b4f436300333e7fff8fba2027337e}{game\+\_\+update}} (\mbox{\hyperlink{struct__Game}{Game}} $\ast$game, T\+\_\+\+Command cmd)
+\begin{DoxyCompactList}\small\item\em updates the games current values with commands \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \mbox{\hyperlink{game_8h_a0736924a1235c0e6fe9b6d91c2a12af8}{game\+\_\+destroy}} (\mbox{\hyperlink{struct__Game}{Game}} $\ast$game)
+\begin{DoxyCompactList}\small\item\em destroys a game like structure \end{DoxyCompactList}\item 
+B\+O\+OL \mbox{\hyperlink{game_8h_aa6efe0650af110bbd84e742cc8046d93}{game\+\_\+is\+\_\+over}} (\mbox{\hyperlink{struct__Game}{Game}} $\ast$game)
+\begin{DoxyCompactList}\small\item\em ends the game \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8h_a33a5ed8937423f8c012df3cedad4fa4c}{game\+\_\+print\+\_\+data}} (\mbox{\hyperlink{struct__Game}{Game}} $\ast$game)
+\begin{DoxyCompactList}\small\item\em prints the values of the game structure \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct__Space}{Space}} $\ast$ \mbox{\hyperlink{game_8h_a34242ac78c87036f8194fee3e92c7fb7}{game\+\_\+get\+\_\+space}} (\mbox{\hyperlink{struct__Game}{Game}} $\ast$game, Id id)
+\begin{DoxyCompactList}\small\item\em finds a space inside of a game structure \end{DoxyCompactList}\item 
+Id \mbox{\hyperlink{game_8h_ac6a628f2106f81c37d0e83c67920615f}{game\+\_\+get\+\_\+player\+\_\+location}} (\mbox{\hyperlink{struct__Game}{Game}} $\ast$game)
+\begin{DoxyCompactList}\small\item\em locates a player inside of the game \end{DoxyCompactList}\item 
+Id \mbox{\hyperlink{game_8h_a6f493abc8fbf86937be81ce49eac6195}{game\+\_\+get\+\_\+object\+\_\+location}} (\mbox{\hyperlink{struct__Game}{Game}} $\ast$game, Id id\+\_\+object)
+\begin{DoxyCompactList}\small\item\em locates an object inside of the game \end{DoxyCompactList}\item 
+T\+\_\+\+Command \mbox{\hyperlink{game_8h_ac35df1afdade2b7659ebbcfeca1f0c35}{game\+\_\+get\+\_\+last\+\_\+command}} (\mbox{\hyperlink{struct__Game}{Game}} $\ast$game)
+\begin{DoxyCompactList}\small\item\em receives the command written by the player \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \mbox{\hyperlink{game_8h_ae8c52687d9d0b4ecd135818d8efa5411}{game\+\_\+set\+\_\+object\+\_\+location}} (\mbox{\hyperlink{struct__Game}{Game}} $\ast$game, Id id\+\_\+space, Id id\+\_\+object)
+\begin{DoxyCompactList}\small\item\em stablishes the location of an object inside of a game \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \mbox{\hyperlink{game_8h_a4724fd67354451838b10b70a85233cff}{game\+\_\+get\+\_\+command\+\_\+status}} (\mbox{\hyperlink{struct__Game}{Game}} $\ast$game)
+\begin{DoxyCompactList}\small\item\em Mainly oriented towards stablishing the value of the status due to the opacity of the game structure. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct__Object}{Object}} $\ast$ \mbox{\hyperlink{game_8h_a9dd97073a19d6c4d0ee64994746333a0}{game\+\_\+get\+\_\+object\+\_\+inp}} (\mbox{\hyperlink{struct__Game}{Game}} $\ast$game, int i)
+\begin{DoxyCompactList}\small\item\em obtains an object in a certain position with a certain i(index) \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \mbox{\hyperlink{game_8h_a9597a8e456aa74db536e87d56f56c3b4}{game\+\_\+add\+\_\+object}} (\mbox{\hyperlink{struct__Game}{Game}} $\ast$game, \mbox{\hyperlink{struct__Object}{Object}} $\ast$object)
+\begin{DoxyCompactList}\small\item\em adds an object to the to the list of objects \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \mbox{\hyperlink{game_8h_ae5ad86de0a92d9eccb234948458da7f1}{game\+\_\+add\+\_\+space}} (\mbox{\hyperlink{struct__Game}{Game}} $\ast$game, \mbox{\hyperlink{struct__Space}{Space}} $\ast$space)
+\begin{DoxyCompactList}\small\item\em adds an object to the to the list of spaces \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct__Player}{Player}} $\ast$ \mbox{\hyperlink{game_8h_af46efd507d797aec6da90d08aa592e32}{game\+\_\+get\+\_\+player}} (\mbox{\hyperlink{struct__Game}{Game}} $\ast$game)
+\begin{DoxyCompactList}\small\item\em receives the player inside of the game structure \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct__Space}{Space}} $\ast$ \mbox{\hyperlink{game_8h_ab8af23fe90e19eabb61a44c5eeeeffc5}{game\+\_\+get\+\_\+space\+\_\+with\+\_\+index}} (\mbox{\hyperlink{struct__Game}{Game}} $\ast$game, long index)
+\begin{DoxyCompactList}\small\item\em gets a space inside of the list found in game from a game and an index \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct__Die}{Die}} $\ast$ \mbox{\hyperlink{game_8h_a5753a09313b092a52c0cea742c40f3cf}{game\+\_\+get\+\_\+die}} (\mbox{\hyperlink{struct__Game}{Game}} $\ast$game)
+\begin{DoxyCompactList}\small\item\em obtains the die related to the game \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{game_8h_a492ca9fb594442dc43fc7d18a3820426}\label{game_8h_a492ca9fb594442dc43fc7d18a3820426}} 
+S\+T\+A\+T\+US {\bfseries game\+\_\+set\+\_\+player\+\_\+location} (\mbox{\hyperlink{struct__Game}{Game}} $\ast$game, Id id)
+\item 
+\mbox{\Hypertarget{game_8h_a4280b7ee7ac0d4575d0aa88e8b7f921b}\label{game_8h_a4280b7ee7ac0d4575d0aa88e8b7f921b}} 
+S\+T\+A\+T\+US {\bfseries game\+\_\+add\+\_\+player} (\mbox{\hyperlink{struct__Game}{Game}} $\ast$game, \mbox{\hyperlink{struct__Player}{Player}} $\ast$player)
+\item 
+\mbox{\Hypertarget{game_8h_a1064ec927b8c33cf55982b73845db7d3}\label{game_8h_a1064ec927b8c33cf55982b73845db7d3}} 
+\mbox{\hyperlink{struct__Link}{Link}} $\ast$ {\bfseries game\+\_\+get\+\_\+link} (\mbox{\hyperlink{struct__Game}{Game}} $\ast$game, Id id)
+\item 
+\mbox{\Hypertarget{game_8h_a4691bee17d5784ad6eb257dfbb252c27}\label{game_8h_a4691bee17d5784ad6eb257dfbb252c27}} 
+S\+T\+A\+T\+US {\bfseries game\+\_\+add\+\_\+link} (\mbox{\hyperlink{struct__Game}{Game}} $\ast$game, \mbox{\hyperlink{struct__Link}{Link}} $\ast$link)
+\item 
+\mbox{\Hypertarget{game_8h_ad128630fe605cbef001d5513c2be4fc5}\label{game_8h_ad128630fe605cbef001d5513c2be4fc5}} 
+char $\ast$ {\bfseries game\+\_\+get\+\_\+last\+Description} (\mbox{\hyperlink{struct__Game}{Game}} $\ast$game)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+It defines the game interface for each command. 
+
+\begin{DoxyAuthor}{Author}
+Profesores P\+P\+R\+OG 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+13-\/01-\/2015 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+G\+NU Public License 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{game_8h_a9597a8e456aa74db536e87d56f56c3b4}\label{game_8h_a9597a8e456aa74db536e87d56f56c3b4}} 
+\index{game.h@{game.h}!game\_add\_object@{game\_add\_object}}
+\index{game\_add\_object@{game\_add\_object}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_add\_object()}{game\_add\_object()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US game\+\_\+add\+\_\+object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Game}{Game}} $\ast$}]{game,  }\item[{\mbox{\hyperlink{struct__Object}{Object}} $\ast$}]{object }\end{DoxyParamCaption})}
+
+
+
+adds an object to the to the list of objects 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & \\
+\hline
+{\em object} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+S\+T\+A\+T\+US 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_ae5ad86de0a92d9eccb234948458da7f1}\label{game_8h_ae5ad86de0a92d9eccb234948458da7f1}} 
+\index{game.h@{game.h}!game\_add\_space@{game\_add\_space}}
+\index{game\_add\_space@{game\_add\_space}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_add\_space()}{game\_add\_space()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US game\+\_\+add\+\_\+space (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Game}{Game}} $\ast$}]{game,  }\item[{\mbox{\hyperlink{struct__Space}{Space}} $\ast$}]{space }\end{DoxyParamCaption})}
+
+
+
+adds an object to the to the list of spaces 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & \\
+\hline
+{\em space} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+S\+T\+A\+T\+US 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_a1cdbe3f06b9bf49eb5e334a22ad3b2b9}\label{game_8h_a1cdbe3f06b9bf49eb5e334a22ad3b2b9}} 
+\index{game.h@{game.h}!game\_create@{game\_create}}
+\index{game\_create@{game\_create}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_create()}{game\_create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct__Game}{Game}}$\ast$ game\+\_\+create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+creates a game like structure 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+S\+T\+A\+T\+US
+\end{DoxyReturn}
+Game interface implementation \mbox{\Hypertarget{game_8h_afc77f90739be0fd45b7f5616e543bfae}\label{game_8h_afc77f90739be0fd45b7f5616e543bfae}} 
+\index{game.h@{game.h}!game\_create\_from\_file@{game\_create\_from\_file}}
+\index{game\_create\_from\_file@{game\_create\_from\_file}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_create\_from\_file()}{game\_create\_from\_file()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US game\+\_\+create\+\_\+from\+\_\+file (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Game}{Game}} $\ast$}]{game,  }\item[{char $\ast$}]{filename }\end{DoxyParamCaption})}
+
+
+
+creates a game from a read file 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & \\
+\hline
+{\em filename} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+S\+T\+A\+T\+US 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_a0736924a1235c0e6fe9b6d91c2a12af8}\label{game_8h_a0736924a1235c0e6fe9b6d91c2a12af8}} 
+\index{game.h@{game.h}!game\_destroy@{game\_destroy}}
+\index{game\_destroy@{game\_destroy}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_destroy()}{game\_destroy()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US game\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Game}{Game}} $\ast$}]{game }\end{DoxyParamCaption})}
+
+
+
+destroys a game like structure 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+S\+T\+A\+T\+US 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_a4724fd67354451838b10b70a85233cff}\label{game_8h_a4724fd67354451838b10b70a85233cff}} 
+\index{game.h@{game.h}!game\_get\_command\_status@{game\_get\_command\_status}}
+\index{game\_get\_command\_status@{game\_get\_command\_status}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_get\_command\_status()}{game\_get\_command\_status()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US game\+\_\+get\+\_\+command\+\_\+status (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Game}{Game}} $\ast$}]{game }\end{DoxyParamCaption})}
+
+
+
+Mainly oriented towards stablishing the value of the status due to the opacity of the game structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+S\+T\+A\+T\+US 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_a5753a09313b092a52c0cea742c40f3cf}\label{game_8h_a5753a09313b092a52c0cea742c40f3cf}} 
+\index{game.h@{game.h}!game\_get\_die@{game\_get\_die}}
+\index{game\_get\_die@{game\_get\_die}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_get\_die()}{game\_get\_die()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct__Die}{Die}}$\ast$ game\+\_\+get\+\_\+die (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Game}{Game}} $\ast$}]{game }\end{DoxyParamCaption})}
+
+
+
+obtains the die related to the game 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+die$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_ac35df1afdade2b7659ebbcfeca1f0c35}\label{game_8h_ac35df1afdade2b7659ebbcfeca1f0c35}} 
+\index{game.h@{game.h}!game\_get\_last\_command@{game\_get\_last\_command}}
+\index{game\_get\_last\_command@{game\_get\_last\_command}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_get\_last\_command()}{game\_get\_last\_command()}}
+{\footnotesize\ttfamily T\+\_\+\+Command game\+\_\+get\+\_\+last\+\_\+command (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Game}{Game}} $\ast$}]{game }\end{DoxyParamCaption})}
+
+
+
+receives the command written by the player 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T\+\_\+\+Command 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_a9dd97073a19d6c4d0ee64994746333a0}\label{game_8h_a9dd97073a19d6c4d0ee64994746333a0}} 
+\index{game.h@{game.h}!game\_get\_object\_inp@{game\_get\_object\_inp}}
+\index{game\_get\_object\_inp@{game\_get\_object\_inp}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_get\_object\_inp()}{game\_get\_object\_inp()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct__Object}{Object}}$\ast$ game\+\_\+get\+\_\+object\+\_\+inp (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Game}{Game}} $\ast$}]{game,  }\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+obtains an object in a certain position with a certain i(index) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & \\
+\hline
+{\em i} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Object$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_a6f493abc8fbf86937be81ce49eac6195}\label{game_8h_a6f493abc8fbf86937be81ce49eac6195}} 
+\index{game.h@{game.h}!game\_get\_object\_location@{game\_get\_object\_location}}
+\index{game\_get\_object\_location@{game\_get\_object\_location}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_get\_object\_location()}{game\_get\_object\_location()}}
+{\footnotesize\ttfamily Id game\+\_\+get\+\_\+object\+\_\+location (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Game}{Game}} $\ast$}]{game,  }\item[{Id}]{id\+\_\+object }\end{DoxyParamCaption})}
+
+
+
+locates an object inside of the game 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & \\
+\hline
+{\em id\+\_\+object} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Id 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_af46efd507d797aec6da90d08aa592e32}\label{game_8h_af46efd507d797aec6da90d08aa592e32}} 
+\index{game.h@{game.h}!game\_get\_player@{game\_get\_player}}
+\index{game\_get\_player@{game\_get\_player}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_get\_player()}{game\_get\_player()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct__Player}{Player}}$\ast$ game\+\_\+get\+\_\+player (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Game}{Game}} $\ast$}]{game }\end{DoxyParamCaption})}
+
+
+
+receives the player inside of the game structure 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Player$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_ac6a628f2106f81c37d0e83c67920615f}\label{game_8h_ac6a628f2106f81c37d0e83c67920615f}} 
+\index{game.h@{game.h}!game\_get\_player\_location@{game\_get\_player\_location}}
+\index{game\_get\_player\_location@{game\_get\_player\_location}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_get\_player\_location()}{game\_get\_player\_location()}}
+{\footnotesize\ttfamily Id game\+\_\+get\+\_\+player\+\_\+location (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Game}{Game}} $\ast$}]{game }\end{DoxyParamCaption})}
+
+
+
+locates a player inside of the game 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Id 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_a34242ac78c87036f8194fee3e92c7fb7}\label{game_8h_a34242ac78c87036f8194fee3e92c7fb7}} 
+\index{game.h@{game.h}!game\_get\_space@{game\_get\_space}}
+\index{game\_get\_space@{game\_get\_space}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_get\_space()}{game\_get\_space()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct__Space}{Space}} $\ast$ game\+\_\+get\+\_\+space (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Game}{Game}} $\ast$}]{game,  }\item[{Id}]{id }\end{DoxyParamCaption})}
+
+
+
+finds a space inside of a game structure 
+
+receives a space from its respective id and a game
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & \\
+\hline
+{\em id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Space$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_ab8af23fe90e19eabb61a44c5eeeeffc5}\label{game_8h_ab8af23fe90e19eabb61a44c5eeeeffc5}} 
+\index{game.h@{game.h}!game\_get\_space\_with\_index@{game\_get\_space\_with\_index}}
+\index{game\_get\_space\_with\_index@{game\_get\_space\_with\_index}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_get\_space\_with\_index()}{game\_get\_space\_with\_index()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct__Space}{Space}}$\ast$ game\+\_\+get\+\_\+space\+\_\+with\+\_\+index (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Game}{Game}} $\ast$}]{game,  }\item[{long}]{index }\end{DoxyParamCaption})}
+
+
+
+gets a space inside of the list found in game from a game and an index 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & \\
+\hline
+{\em index} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Space$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_aa6efe0650af110bbd84e742cc8046d93}\label{game_8h_aa6efe0650af110bbd84e742cc8046d93}} 
+\index{game.h@{game.h}!game\_is\_over@{game\_is\_over}}
+\index{game\_is\_over@{game\_is\_over}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_is\_over()}{game\_is\_over()}}
+{\footnotesize\ttfamily B\+O\+OL game\+\_\+is\+\_\+over (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Game}{Game}} $\ast$}]{game }\end{DoxyParamCaption})}
+
+
+
+ends the game 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+B\+O\+OL 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_a33a5ed8937423f8c012df3cedad4fa4c}\label{game_8h_a33a5ed8937423f8c012df3cedad4fa4c}} 
+\index{game.h@{game.h}!game\_print\_data@{game\_print\_data}}
+\index{game\_print\_data@{game\_print\_data}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_print\_data()}{game\_print\_data()}}
+{\footnotesize\ttfamily void game\+\_\+print\+\_\+data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Game}{Game}} $\ast$}]{game }\end{DoxyParamCaption})}
+
+
+
+prints the values of the game structure 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{game_8h_ae8c52687d9d0b4ecd135818d8efa5411}\label{game_8h_ae8c52687d9d0b4ecd135818d8efa5411}} 
+\index{game.h@{game.h}!game\_set\_object\_location@{game\_set\_object\_location}}
+\index{game\_set\_object\_location@{game\_set\_object\_location}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_set\_object\_location()}{game\_set\_object\_location()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US game\+\_\+set\+\_\+object\+\_\+location (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Game}{Game}} $\ast$}]{game,  }\item[{Id}]{id\+\_\+space,  }\item[{Id}]{id\+\_\+object }\end{DoxyParamCaption})}
+
+
+
+stablishes the location of an object inside of a game 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & \\
+\hline
+{\em id\+\_\+space} & \\
+\hline
+{\em id\+\_\+object} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+S\+T\+A\+T\+US 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_a005b4f436300333e7fff8fba2027337e}\label{game_8h_a005b4f436300333e7fff8fba2027337e}} 
+\index{game.h@{game.h}!game\_update@{game\_update}}
+\index{game\_update@{game\_update}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_update()}{game\_update()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US game\+\_\+update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct__Game}{Game}} $\ast$}]{game,  }\item[{T\+\_\+\+Command}]{cmd }\end{DoxyParamCaption})}
+
+
+
+updates the games current values with commands 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & \\
+\hline
+{\em cmd} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+S\+T\+A\+T\+US 
+\end{DoxyReturn}

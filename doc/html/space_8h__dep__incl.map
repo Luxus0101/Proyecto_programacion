@@ -1,0 +1,9 @@
+<map id="include/space.h" name="include/space.h">
+<area shape="rect" id="node1" title="It defines a space." alt="" coords="216,5,339,32"/>
+<area shape="rect" id="node2" href="$game_8h.html" title="It defines the game interface for each command." alt="" coords="216,155,339,181"/>
+<area shape="rect" id="node7" href="$player_8h_source.html" title=" " alt="" coords="265,80,391,107"/>
+<area shape="rect" id="node3" href="$game__reader_8h_source.html" title=" " alt="" coords="5,229,176,256"/>
+<area shape="rect" id="node4" href="$game_8c.html" title="It implements the game interface and all the associated callbacks for each command." alt="" coords="135,304,228,331"/>
+<area shape="rect" id="node5" href="$graphic__engine_8h.html" title="It defines a textual graphic engine." alt="" coords="251,229,435,256"/>
+<area shape="rect" id="node6" href="$game__loop_8c.html" title="It defines the game loop." alt="" coords="311,304,439,331"/>
+</map>
