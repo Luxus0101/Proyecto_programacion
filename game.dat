@@ -1,0 +1,60 @@
+#s:1|Cage|-1|-1|1|-1|  =======  |  =======  |  =======  |Cage|You are in a   cage,you feel dizzy, nothing feels real, there's a big rotten wooden door (CageDoor) is blocking the way out|1|
+#s:2|Corridor|1|-1|-1|2|  /      / | /      /  |/      /   |Dark Corridor|The floor is wet, looks like water is coming out from a door at your left|0|
+#s:3|Well|-1|-1|3|-1| !       ! | !       ! |  -------  |Well|You are trapped in a well, water is coming from a hole over your head, the only way out is a small drain|1|
+#s:4|Jail|-1|-1|4|-1|  =======  |  =======  |  =======  |Jail|You fell in a room with lot of cages, looks like you weren't the only one trapped but the only one alive|1|
+#s:5|GoldRoom|4|5|-1|-1|   \^_^/   |    / \    |    \ /    |Golden Room|Wow! This room is very different, looks from a rich house. However, the weird creepy paintings make you shiver,are they looking at you?|1|
+#s:6|stairs|-1|-1|6|5|   |_     |    |_     |     |_    |Staircase|you find some stairs and start going up, a weird noise in the distance scares you|1|
+#s:7|tower|6|7|-1|-1|   \^^/   |    / \    |    \ /    |tall tower|designed with byzantine shapes, but something feels weird, you smell burning wood|1|
+#s:8|trapdoor|-1|-1|8|7|     _   |    | .|    |    _   |trapdoor|its just a trapdoor, not much to say about it, it do be looking quite cool though|1|
+#s:9|huge_drop|-1|-1|9|-1|         |         |          |hole|you literally just jumped in a trapdoor on top of a tower what did you expect|1|
+#s:10|c&b_torturedungeon|-1|10|-1|-1|   \^_^/   |    / \    |    \ /    |dungeon|you reached the most profound secret the aristocrats had, you smell the oudor of rot and blood |1|
+#s:11|dark_room|-1|11|12|10|    _    |    /-\    |     \_/    |dark room|you can´t see shit, isn´t there a switch over here????|0|
+#s:12|slide|12|-1|13|-1|  \        |    \      |   \_     |slide|apparently the dark room lead to a slide, it goes down though do you really want to descend it?,well its not like you have other options is there?|1|
+#s:13|hidden room|-1|-1|-1|11|           |    / \    |    \ /    |hidden room|the door closes behind you you can´t get away, time passes and just as you´re about to perish you open your eyes|1|
+#s:14|red room|13|-1|14|-1|   000   |    000  / |   \ 000   |bloody room|you realise it wasn´t a slide you went through but a dispenser for trash, you basically ended up in the room where the corpses are disposed,you here the sound of singing behind a door who could it be|1|
+#s:15|throne room|14|-1|15|-1|   /_\   |   /   \   |    ()\_/()    |throne|you advanced through the catacombs and ended up below the throne literally, it seems heavy but you should be able to move it|1|
+#s:16|sculpture room|15|-1|16|-1|   I   |     \/I\/    |    /\    |s room|you see different sculptures related to the novelty which lived in the castle, most of them with crooked, bent necks and glasses, you think to yourself, aaagh, ingeneers|1|
+#s:17|wide hallway|16|18|20|17|  llll  |   llll   |   llll    |hallway|yes another hallway because thats what castles are good at, huge long equally arranged rooms which only seem to work as a way for the rich to laugh at you,"aaaah, i want to go home" you think|1|
+#s:18|main door|-1|21|19|-1|   _  |    I *I    |    I_I    |big door|its apparently locked, try searching for a key, and quite a big one because the hole is tremendously big|1|
+#s:19|key room|20|-1|-1|-1|   º\   |   \    |    0   |keys| the room is crowded with keys, however you notice a gigantic one in the middle of the room|1|
+#s:20|outside|19|-1|-1|-1|    _/\_    |    /\/\    |   /     \   |out|still intrigued by who´s voice that was you leave the castle into the darkness of the night, after a while you feel dizzy|1|
+#s:21|kitchen|-1|-1|-1|18|      |    &\/&    |   &__&   |cook|you entered the kitchen following the noises, it was angela the coordinator all along, she notices you and starts attacking you, you drop to the floor unconscious after she stabs you...|1|
+#o:1|rock|1|Looks heavy|0|-1|1|0|0|
+#o:2|torch|1|Might light a small place|0|-1|-1|1|0|
+#o:3|lever|4|May be inserted somewhere|0|-1|4|0|0|
+#o:4|note|4|"To the poor soul who finds my corpse, this "jail" may look like a labyrinth but there's a way out, use the lever to open the door (MetalDoor) and sorry, for my horrible sketch ;)"|0|-1|-1|0|0|
+#o:5|listen|6|you listen carefully, a weird sudden screech alarms you, you try to descipher it the voice says "the iterashon foor mast bi turnedon by sunday"|0|-1|-1|0|0|
+#o:6|telescope|7|you use the telescope, in the distance you see a burning church, you realise you are in israel|0|-1|-1|0|0|
+#o:7|match_box|10|a small match box, what did they need this for?|0|-1|-1|1|0|
+#o:8|dull_key|11|its just a corroded key, doesn't really fit the aesthetic of the place|0|-1|11|0|0|
+#o:9|corpse|14|you pay more attention and realise he is an autonomous worker, probably died because of the recent augmentation on taxes|0|-1|-1|0|0|
+#o:10|jim_bar|15|mildly corroded could be useful later|0|-1|15|0|0|
+#o:11|gold_earrings|15|wow somebody left some expensive looking earrings, i should try to find out, how I can sell them ;)(what were you expecting)|0|-1|-1|0|0|
+#o:12|yo_mama|16|you see a small sculpture of yo mama, but realise you can´t move it, it´s way too heavy( yes yo mama jokes in 2021 :D )|0|-1|-1|0|0|
+#o:13|listen|17|you stop moving and listen to the chants which come out of the kitchen, it´s a familiar voice|0|-1|-1|0|0|
+#o:14|pistol|18|a gun is on the floor, it has no bullets, what is happening here?|0|-1|-1|0|0|
+#o:15|huge_key|19|where could I use it? you say ironically|0|-1|19|0|0|
+#p:1|Mr.Santini|1|2|
+#l:1|CageDoor|1|2|1|
+#l:2|door|2|3|0|
+#l:3|drain|3|4|0|
+#l:4|MetalDoor|4|5|1|
+#l:5|stairs|5|6|0|
+#l:6|tower|6|7|0|
+#l:7|trapdoor|7|8|0|
+#l:8|drop|8|9|0|
+#l:9|torture|9|10|0|
+#l:10|dark|10|11|0|
+#l:11|hidden|11|13|1|
+#l:12|slide|11|12|0|
+#l:13|red|12|14|0|
+#l:14|throneroom|14|15|0|
+#l:15|throne|15|16|1|
+#l:16|hallway|16|17|0|
+#l:17|MainDoor|17|18|0|
+#l:18|kitchen|17|21|0|
+#l:19|big_door|18|20|1|
+#l:20|key|17|19|0|
+#l:21|back|18|17|0|
+
+

@@ -1,7 +1,2 @@
-Next : OK
-Next : OK
-Next : OK
-Next : OK
-Next : OK
-Unknown : ERROR
+Move : OK
 Exit : OK

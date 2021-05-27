@@ -15,8 +15,8 @@ typedef struct _Link Link;
  * @brief Links Status, OPEN or CLOSED
  */
 typedef enum {
-    OPEN,
-    CLOSED
+    Open,
+    Closed
 }LINK_ST;
 
 

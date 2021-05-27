@@ -51,12 +51,15 @@ STATUS space_setDesc(Space *space, char *desc, int index);
  * @return TRUE if they are connected or FALSE otherwise
  */
 BOOL space_areConnected(Space *space1, Space *space2);
-char *space_get_description(Space *space);
-STATUS space_set_description(Space *space, char *desc);
+char *space_get_short_description(Space *space);
+STATUS space_set_short_description(Space *space, char *desc);
+char *space_get_large_description(Space *space);
+STATUS space_set_large_description(Space *space, char *desc);
 STATUS space_set_up(Space *space, Id up);
 STATUS space_set_down(Space *space, Id down);
 Id space_get_up(Space *space);
 Id space_get_down(Space *space);
+STATUS space_set_illuminated(Space *space, BOOL i);
 BOOL space_get_illuminated(Space *space);
-
+char *space_get_gdesc(Space *space, int i);
 #endif

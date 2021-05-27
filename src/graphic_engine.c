@@ -84,7 +84,6 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     {
       lp = Le;
     }
-
     strcpy(obj, "");
     for (int i = 0; i < MAX_OBJECTS; i++)
     {
@@ -96,21 +95,21 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
       switch (lp)
       {
       case Bo:
-        sprintf(str, "     %ld+-----------+%ld", space_get_west(game_get_space(game, id_back)), space_get_east(game_get_space(game, id_back)));
+        sprintf(str, "  +-----------+");
         screen_area_puts(ge->map, str);
-        sprintf(str, "%ld<--|         %2d|-->%ld", link_getConnection2(game_get_link(game, space_get_west(game_get_space(game, id_back)))), (int)id_back, link_getConnection2(game_get_link(game, space_get_east(game_get_space(game, id_back)))));
+        sprintf(str, "%s<--|            %2d|-->%s ", link_getName(game_get_link(game, space_get_west(game_get_space(game, id_back)))), (int)id_back, link_getName(game_get_link(game, space_get_east(game_get_space(game, id_back)))));
         screen_area_puts(ge->map, str);
         break;
       case Le:
-        sprintf(str, "%ld+-----------+", space_get_west(game_get_space(game, id_back)));
+        sprintf(str, "  +-----------+");
         screen_area_puts(ge->map, str);
-        sprintf(str, "%ld<--|         %2d|", link_getConnection2(game_get_link(game, space_get_west(game_get_space(game, id_back)))), (int)id_back);
+        sprintf(str, "%s<--|         %2d|", link_getName(game_get_link(game, space_get_west(game_get_space(game, id_back)))), (int)id_back);
         screen_area_puts(ge->map, str);
         break;
       case Ri:
-        sprintf(str, "  +-----------+%ld", space_get_east(game_get_space(game, id_back)));
+        sprintf(str, "  +-----------+");
         screen_area_puts(ge->map, str);
-        sprintf(str, "  |         %2d|-->%ld", (int)id_back, link_getConnection2(game_get_link(game, space_get_east(game_get_space(game, id_back)))));
+        sprintf(str, "  |         %2d|-->%s ", (int)id_back, link_getName(game_get_link(game, space_get_east(game_get_space(game, id_back)))));
         screen_area_puts(ge->map, str);
         break;
       default:
@@ -157,7 +156,9 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     for (int i = 0; i < MAX_OBJECTS; i++)
     {
       if (game_get_object_location(game, object_get_id(game_get_object_inp(game, i))) == id_act)
+      {
         strcat(obj, object_get_name((game_get_object_inp(game, i))));
+      }
     }
     lp = Em;
     if ((space_get_east(game_get_space(game, id_act)) != NO_ID))
@@ -178,21 +179,21 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
       switch (lp)
       {
       case Bo:
-        sprintf(str, "     %ld+-----------+%ld", space_get_west(game_get_space(game, id_act)), space_get_east(game_get_space(game, id_act)));
+        sprintf(str, "  +-----------+");
         screen_area_puts(ge->map, str);
-        sprintf(str, "%ld<--|:D       %2d|-->%ld", link_getConnection2(game_get_link(game, space_get_west(game_get_space(game, id_act)))), (int)id_act, link_getConnection2(game_get_link(game, space_get_east(game_get_space(game, id_act)))));
+        sprintf(str, "%s<--|:D       %2d|-->%s ", link_getName(game_get_link(game, space_get_west(game_get_space(game, id_act)))), (int)id_act, link_getName(game_get_link(game, space_get_east(game_get_space(game, id_act)))));
         screen_area_puts(ge->map, str);
         break;
       case Le:
-        sprintf(str, "%ld+-----------+", space_get_west(game_get_space(game, id_act)));
+        sprintf(str, "  +-----------+");
         screen_area_puts(ge->map, str);
-        sprintf(str, "%ld<--|:D       %2d|", link_getConnection2(game_get_link(game, space_get_west(game_get_space(game, id_act)))), (int)id_act);
+        sprintf(str, "%s<--|:D       %2d|", link_getName(game_get_link(game, space_get_west(game_get_space(game, id_act)))), (int)id_act);
         screen_area_puts(ge->map, str);
         break;
       case Ri:
-        sprintf(str, "  +-----------+%ld", space_get_east(game_get_space(game, id_act)));
+        sprintf(str, "  +-----------+");
         screen_area_puts(ge->map, str);
-        sprintf(str, "  |:D       %2d|-->%ld", (int)id_act, link_getConnection2(game_get_link(game, space_get_east(game_get_space(game, id_act)))));
+        sprintf(str, "  |:D       %2d|-->%s ", (int)id_act, link_getName(game_get_link(game, space_get_east(game_get_space(game, id_act)))));
         screen_area_puts(ge->map, str);
         break;
       default:
@@ -259,21 +260,21 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
       switch (lp)
       {
       case Bo:
-        sprintf(str, "     %ld+-----------+%ld", space_get_west(game_get_space(game, id_next)), space_get_east(game_get_space(game, id_next)));
+        sprintf(str, "  +-----------+");
         screen_area_puts(ge->map, str);
-        sprintf(str, "%ld<--|         %2d|-->%ld", link_getConnection2(game_get_link(game, space_get_west(game_get_space(game, id_next)))), (int)id_next, link_getConnection2(game_get_link(game, space_get_east(game_get_space(game, id_next)))));
+        sprintf(str, "%s<--|         %2d|-->%s ", link_getName(game_get_link(game, space_get_west(game_get_space(game, id_next)))), (int)id_next, link_getName(game_get_link(game, space_get_east(game_get_space(game, id_next)))));
         screen_area_puts(ge->map, str);
         break;
       case Le:
-        sprintf(str, "%ld+-----------+", space_get_west(game_get_space(game, id_next)));
+        sprintf(str, "  +-----------+");
         screen_area_puts(ge->map, str);
-        sprintf(str, "%ld<--|         %2d|", link_getConnection2(game_get_link(game, space_get_west(game_get_space(game, id_next)))), (int)id_next);
+        sprintf(str, "%s<--|         %2d|", link_getName(game_get_link(game, space_get_west(game_get_space(game, id_next)))), (int)id_next);
         screen_area_puts(ge->map, str);
         break;
       case Ri:
-        sprintf(str, "  +-----------+%ld", space_get_east(game_get_space(game, id_next)));
+        sprintf(str, "  +-----------+");
         screen_area_puts(ge->map, str);
-        sprintf(str, "  |         %2d|-->%ld", (int)id_next, link_getConnection2(game_get_link(game, space_get_east(game_get_space(game, (int)id_next)))));
+        sprintf(str, "  |         %2d|-->%s ", (int)id_next, link_getName(game_get_link(game, space_get_east(game_get_space(game, (int)id_next)))));
         screen_area_puts(ge->map, str);
         break;
       default:
@@ -315,17 +316,6 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 
     /* Paint in the description area */
     screen_area_clear(ge->descript);
-    for (int i = 0; i < MAX_OBJECTS; i++)
-    {
-      obj_loc = game_get_object_location(game, object_get_id(game_get_object_inp(game, i)));
-      if ((obj_loc != NO_ID))
-      {
-        sprintf(str, "  Object %d location:%d", i + 1, (int)obj_loc);
-        screen_area_puts(ge->descript, str);
-      }
-    }
-    sprintf(str, "  Last roll: %d", die_last_roll(game_get_die(game)));
-    screen_area_puts(ge->descript, str);
     char obj_name[100] = "";
     int num;
     for (int i = 0; i < MAX_OBJECTS; i++)
@@ -346,29 +336,23 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
     sprintf(str, "  Player object: %s", obj_name);
     screen_area_puts(ge->descript, str);
 
-    sprintf(str, "  Descriptions:");
+    sprintf(str, "  Description: %s", game_get_lastDescription(game));
     screen_area_puts(ge->descript, str);
 
-    last_cmd = game_get_last_command(game);
-    if (last_cmd == INSPECT)
-    {
-      sprintf(str, "  %s", game_get_lastDescription(game));
-      screen_area_puts(ge->descript, str);
-    }
-
     /* Paint in the banner area */
-    screen_area_puts(ge->banner, " The game of the Goose ");
+    screen_area_puts(ge->banner, "  Where am I?           - said Santini");
 
     /* Paint in the help area */
     screen_area_clear(ge->help);
     sprintf(str, " The commands you can use are:");
     screen_area_puts(ge->help, str);
-    sprintf(str, "      next or n, back or b, exit or e, d or drop, t or take, rl or roll,             l or left, r or right, m or move, i or inspect");
+    sprintf(str, "     exit or e, d or drop, t or take, rl or roll, l or left, r or right,           m or move (s, n, e, w), i or inspect, on or turnon, off or turnoff,           open (something) with (object), sv or save, l or load");
     screen_area_puts(ge->help, str);
 
     /* Paint in the feedback area */
-    last_cmd = game_get_last_command(game);
-    sprintf(str, " %s (%s)", cmd_to_str[last_cmd - NO_CMD][CMDL], cmd_to_str[last_cmd - NO_CMD][CMDS]);
+    //last_cmd = game_get_last_command(game);
+    //sprintf(str, " %s (%s)", cmd_to_str[last_cmd - NO_CMD][CMDL], cmd_to_str[last_cmd - NO_CMD][CMDS]);
+    sprintf(str, "%s", dialogue_get_dial(game_get_dial(game)));
     screen_area_puts(ge->feedback, str);
 
     /* Dump to the terminal */

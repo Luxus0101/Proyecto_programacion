@@ -83,6 +83,7 @@ int game_loop_init(Game *game, Graphic_engine **gengine, char *file_name)
 void game_loop_run(Game *game, Graphic_engine *gengine, FILE *f1)
 {
   T_Command command = NO_CMD;
+  STATUS st = ERROR;
 
   while ((command != EXIT) && !game_is_over(game))
   {
@@ -90,8 +91,9 @@ void game_loop_run(Game *game, Graphic_engine *gengine, FILE *f1)
     graphic_engine_paint_game(gengine, game);
     command = get_user_input();
     game_update(game, command);
-    /* there´s quite an important change here, related to the swap performed in the Game stuct */
-    if ((game_get_command_status(game) == OK) && (f1 != NULL))
+    st = game_get_command_status(game);
+    dialogue_switch(game_get_dial(game), game_get_last_command(game), st);
+    if (st == OK && f1 != NULL)
     {
       fprintf(f1, "%s : OK\n", strcmd = change_command_to_string(command));
       free(strcmd);
@@ -108,5 +110,4 @@ void game_loop_cleanup(Game *game, Graphic_engine *gengine)
 {
   game_destroy(game);
   graphic_engine_destroy(gengine);
-
 }

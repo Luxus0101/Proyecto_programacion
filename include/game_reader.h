@@ -23,3 +23,7 @@ STATUS game_load_spaces(Game *game, char *filename);
 STATUS game_load_objects(Game *game, char *filename);
 STATUS game_load_player(Game *game, char *filename);
 STATUS game_load_links(Game *game, char *filename);
+STATUS game_management_save(Game *game, char *filename);
+STATUS game_management_load(Game *game, char *filename);
+STATUS game_load_die(Game *game, char *filename);
+STATUS game_load_inv(Game *game, char *filename);

@@ -109,3 +109,14 @@ int die_last_roll(Die *die){
 
   return die->last_roll;
 }
+
+STATUS die_set_lastroll(Die *die, int last_roll)
+{
+  if (!die)
+  {
+    return ERROR;
+  }
+  die->last_roll = last_roll;
+  return OK;
+}
+

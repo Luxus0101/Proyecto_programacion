@@ -6,30 +6,45 @@
 
 struct _Object
 {
-    Id id;
-    char name[WORD_SIZE + 1];
-    char desc[WORD_SIZE];
+  Id id;
+  char name[WORD_SIZE + 1];
+  char desc[WORD_SIZE];
+  BOOL movable;
+  Id dependency;
+  Id open;
+  BOOL illuminate;
+  BOOL turnedon;
 };
 
 Object *object_create(Id id)
 {
-    Object *newObject = NULL;
+  Object *newObject = NULL;
 
-    if (id == NO_ID)
-        return NULL;
+  if (id == NO_ID)
+    return NULL;
 
-    newObject = (Object *)malloc(sizeof(Object));
+  newObject = (Object *)malloc(sizeof(Object));
 
-    if (newObject == NULL)
-    {
-        return NULL;
-    }
+  if (newObject == NULL)
+  {
+    return NULL;
+  }
 
-    newObject->id = id;
+  newObject->id = id;
 
-    newObject->name[0] = '\0';
+  newObject->name[0] = '\0';
 
-    return newObject;
+  newObject->movable = FALSE;
+
+  newObject->dependency = NO_ID;
+
+  newObject->open = NO_ID;
+
+  newObject->illuminate = FALSE;
+
+  newObject->turnedon = FALSE;
+
+  return newObject;
 }
 
 STATUS object_destroy(Object *object)
@@ -85,9 +100,10 @@ STATUS object_set_id(Object *object, Id id)
   {
     return ERROR;
   }
-    if (id<0){
-      return ERROR;
-    }
+  if (id < 0)
+  {
+    return ERROR;
+  }
   object->id = id;
 
   return OK;
@@ -101,13 +117,126 @@ Id object_get_id(Object *object)
   return object->id;
 }
 
-STATUS object_set_description(Object *object, char *desc){
-  if(!object) return ERROR;
+STATUS object_set_description(Object *object, char *desc)
+{
+  if (!object)
+    return ERROR;
   strcpy(object->desc, desc);
   return OK;
 }
 
-char *object_get_description(Object *object){
-  if(!object) return NULL;
+char *object_get_description(Object *object)
+{
+  if (!object)
+    return NULL;
   return object->desc;
+}
+
+BOOL object_isMovable(Object *object)
+{
+  if (object == NULL)
+  {
+    return FALSE;
+  }
+
+  return object->movable;
+}
+
+STATUS object_setMovable(Object *object, BOOL movable)
+{
+  if (object == NULL)
+  {
+    return ERROR;
+  }
+
+  object->movable = movable;
+  return OK;
+}
+
+Id object_getDependency(Object *object)
+{
+  if (object == NULL)
+  {
+    return NO_ID;
+  }
+
+  return object->dependency;
+}
+
+STATUS object_setDependency(Object *object, Id object_id)
+{
+  if (object == NULL || object_id < NO_ID)
+  {
+    return ERROR;
+  }
+
+  object->dependency = object_id;
+
+  return OK;
+}
+
+Id object_getOpen(Object *object)
+{
+  if (object == NULL)
+  {
+    return NO_ID;
+  }
+
+  return object->open;
+}
+
+STATUS object_setOpen(Object *object, Id link_id)
+{
+  if (object == NULL || link_id < NO_ID)
+  {
+    return ERROR;
+  }
+
+  object->open = link_id;
+
+  return OK;
+}
+
+BOOL object_canIlluminate(Object *object)
+{
+  if (object == NULL)
+  {
+    return FALSE;
+  }
+
+  return object->illuminate;
+}
+
+STATUS object_setIlluminate(Object *object, BOOL illuminate)
+{
+  if (object == NULL)
+  {
+    return ERROR;
+  }
+
+  object->illuminate = illuminate;
+
+  return OK;
+}
+
+BOOL object_isTurnedon(Object *object)
+{
+  if (object == NULL)
+  {
+    return FALSE;
+  }
+
+  return object->turnedon;
+}
+
+STATUS object_setTurnedon(Object *object, BOOL turned)
+{
+  if (object == NULL)
+  {
+    return ERROR;
+  }
+
+  object->turnedon = turned;
+
+  return OK;
 }

@@ -2,7 +2,7 @@ SOURCEDIR = src
 HEADERDIR = include
 OBJDIR = obj
 
-OBJGAME = $(OBJDIR)/game.o $(OBJDIR)/game_loop.o $(OBJDIR)/command.o $(OBJDIR)/die.o $(OBJDIR)/game_reader.o $(OBJDIR)/graphic_engine.o $(OBJDIR)/object.o $(OBJDIR)/player.o $(OBJDIR)/screen.o $(OBJDIR)/set.o $(OBJDIR)/space.o $(OBJDIR)/space.o $(OBJDIR)/links.o $(OBJDIR)/inventory.o
+OBJGAME = $(OBJDIR)/game.o $(OBJDIR)/game_loop.o $(OBJDIR)/command.o $(OBJDIR)/die.o $(OBJDIR)/gameManagement.o $(OBJDIR)/graphic_engine.o $(OBJDIR)/object.o $(OBJDIR)/player.o $(OBJDIR)/screen.o $(OBJDIR)/set.o $(OBJDIR)/space.o $(OBJDIR)/space.o $(OBJDIR)/links.o $(OBJDIR)/inventory.o $(OBJDIR)/dialogue.o
 
 CC = gcc
 CFLAGS = -g -Wall -pedantic -I $(HEADERDIR)

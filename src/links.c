@@ -34,10 +34,10 @@ Link *link_create()
         return NULL;
     }
 
-    l->id = -1;
-    l->link1 = 0;
-    l->link2 = 0;
-    l->st = OPEN;
+    l->id = NO_ID;
+    l->link1 = NO_ID;
+    l->link2 = NO_ID;
+    l->st = Open;
     l->name[0] = '\0';
 
     return l;
@@ -164,7 +164,7 @@ STATUS link_print(Link *l)
     }
 
     fprintf(stdout, "Link id: %ld\nName:%s\nSpace 1 ID: %ld\nSpace 2 ID: %ld\n", l->id, l->name, l->link1, l->link2);
-    if (l->st == OPEN)
+    if (l->st == Open)
     {
         fprintf(stdout, "Status: OPEN");
     }
@@ -172,5 +172,5 @@ STATUS link_print(Link *l)
     {
         fprintf(stdout, "Status: CLOSED");
     }
-return OK;
+    return OK;
 }

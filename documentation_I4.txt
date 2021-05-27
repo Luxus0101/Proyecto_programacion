@@ -1,0 +1,27 @@
+DOCUMENTATION FILE
+------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
+NAME: Lucas Piorno Palomo
+ASSIGMENTS: exercise 1, 2, 3, 4
+--> Implemented illumination functionality, improved inspect command and descriptions, added up and down dimensions to game
+TIME: 5 hours and 30 mins aprox
+TERMS AND CONDITIONS OF DELIVERIES: 29h of April
+------------------------------------------------------------------------------------------------
+NAME: Nicolas Pacini Herz
+ASSIGMENTS: exercise 
+--> 
+TIME: 
+TERMS AND CONDITIONS OF DELIVERIES: 
+------------------------------------------------------------------------------------------------
+NAME: Enrique Ortega Yegros
+ASSIGMENTS: exercise 
+--> 
+TIME: 
+TERMS AND CONDITIONS OF DELIVERIES: 
+------------------------------------------------------------------------------------------------
+NAME: María Paloma Ruiz Matesanz
+ASSIGMENTS: 
+--> 
+TIME: 
+TERMS AND CONDITIONS OF DELIVERIES: 
+------------------------------------------------------------------------------------------------

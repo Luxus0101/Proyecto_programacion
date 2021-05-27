@@ -9,7 +9,8 @@ STATUS game_load_spaces(Game *game, char *filename)
   FILE *file = NULL;
   char line[WORD_SIZE] = "";
   char name[WORD_SIZE] = "";
-  char sdesc[WORD_SIZE] = "";
+  char s_short_desc[WORD_SIZE] = "";
+  char s_large_desc[WORD_SIZE] = "";
   char *gdesc[NUM_SHAPES];
   for (int i = 0; i < NUM_SHAPES; i++)
   {
@@ -71,7 +72,10 @@ STATUS game_load_spaces(Game *game, char *filename)
       }
       toks = strtok(NULL, "|");
       if(toks)
-      strcpy(sdesc, toks);
+      strcpy(s_short_desc, toks);
+      toks = strtok(NULL, "|");
+      if(toks)
+      strcpy(s_large_desc, toks);
 
 
 #ifdef DEBUG
@@ -88,7 +92,8 @@ STATUS game_load_spaces(Game *game, char *filename)
         space_setDesc(space, gdesc[0], 0);
         space_setDesc(space, gdesc[1], 1);
         space_setDesc(space, gdesc[2], 2);
-        space_set_description(space, sdesc);
+        space_set_short_description(space, s_short_desc);
+        space_set_large_description(space, s_large_desc);
         game_add_space(game, space);
       }
     }

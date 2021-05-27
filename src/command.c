@@ -25,7 +25,13 @@ char *cmd_to_str[N_CMD][N_CMDT] =
 		{"d", "Drop"},
 		{"rl", "Roll"},
 		{"m", "Move"},
-		{"i", "Inspect"}};
+		{"i", "Inspect"},
+		{"on","Turnon"},
+		{"off","Turnoff"},
+		{"o","Open"},
+		{"sv", "Save"},
+		{"l", "Load"}
+		};
 
 T_Command get_user_input()
 {

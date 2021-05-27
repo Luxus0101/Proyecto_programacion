@@ -121,6 +121,14 @@ STATUS die_set_id(Die *die, Id id);
  * @return Returns die->last_state, ERROR if die doesnt exists.
  **/
 int die_last_roll(Die *die);
+/**
+ * @brief Assigns a new value to the last roll of the die
+ * 
+ * @param die Pointer to the die.
+ * @param last_roll new value of last roll
+ * @return STATUS OK or ERROR
+ */
+STATUS die_set_lastroll(Die *die, int last_roll);
 
 
 #endif

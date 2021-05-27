@@ -1,0 +1,17 @@
+Take : OK
+Open : OK
+Move : OK
+Move : OK
+Inspect : OK
+Move : OK
+Take : OK
+Move : ERROR
+Open : OK
+Move : OK
+Inspect : OK
+Move : OK
+Move : ERROR
+Move : ERROR
+Move : ERROR
+Move : OK
+Exit : OK

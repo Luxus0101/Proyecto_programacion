@@ -12,7 +12,7 @@
 #define COMMAND_H
 
 #define N_CMDT 2
-#define N_CMD 8
+#define N_CMD 13
 
 typedef enum enum_CmdType
 {
@@ -29,7 +29,12 @@ typedef enum enum_Command
   DROP,
   ROLL,
   MOVE,
-  INSPECT
+  INSPECT,
+  TURNON,
+  TURNOFF,
+  OPEN,
+  SAVE,
+  LOAD
 } T_Command;
 char *change_command_to_string(T_Command cmd);
 T_Command get_user_input();

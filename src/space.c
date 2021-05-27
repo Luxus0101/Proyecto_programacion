@@ -12,7 +12,8 @@ struct _Space
   Id id;
   char name[WORD_SIZE + 1];
   char *gdesc[NUM_SHAPES];
-  char desc[WORD_SIZE + 1];
+  char short_desc[WORD_SIZE + 1];
+  char large_desc[WORD_SIZE + 1];
   Id north, south, east, west, up, down;
   Set *objects;
   BOOL illuminated;
@@ -45,6 +46,9 @@ Space *space_create(Id id)
     }
     (newSpace->gdesc[i])[0] = '\0';
   }
+
+  strcpy(newSpace->short_desc, "");
+  strcpy(newSpace->large_desc, "");
 
   newSpace->north = NO_ID;
   newSpace->south = NO_ID;
@@ -472,13 +476,32 @@ BOOL space_areConnected(Space *space1, Space *space2)
   return 0;
 }
 
-STATUS space_set_description(Space *space, char *desc){
+STATUS space_set_short_description(Space *space, char *desc){
   if(!space || desc == NULL) return ERROR;
-  strcpy(space->desc, desc);
+  strcpy(space->short_desc, desc);
   return OK;
 }
 
-char *space_get_description(Space *space){
+char *space_get_short_description(Space *space){
   if(!space) return NULL;
-  return space->desc;
+  return space->short_desc;
+}
+
+STATUS space_set_large_description(Space *space, char *desc){
+  if(!space || desc == NULL) return ERROR;
+  strcpy(space->large_desc, desc);
+  return OK;
+}
+
+char *space_get_large_description(Space *space){
+  if(!space) return NULL;
+  return space->large_desc;
+}
+char *space_get_gdesc(Space *space, int i)
+{
+  if (space == NULL || i < 0||i>NUM_SHAPES)
+  {
+    return NULL;
+  }
+  return space->gdesc[i];
 }
